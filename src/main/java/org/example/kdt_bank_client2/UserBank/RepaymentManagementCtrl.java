@@ -1,7 +1,7 @@
 package org.example.kdt_bank_client2.UserBank;
 
 import org.example.kdt_bank_client2.UserBank.model.CustomerInfo;
-import org.example.kdt_bank_client2.UserBank.session.Session;
+import org.example.kdt_bank_client2.UserBank.SessionUser.CustomerSession;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.fxml.FXML;
@@ -20,7 +20,7 @@ public class RepaymentManagementCtrl {
 
     @FXML
     public void initialize() {
-        CustomerInfo cust = Session.getCurrentCustomer();
+        CustomerInfo cust = CustomerSession.getCurrentCustomer();
         if (cust == null) {
             new Alert(Alert.AlertType.WARNING, "먼저 고객을 검색하세요.").showAndWait();
             loanAccountsVBox.setDisable(true);
@@ -39,7 +39,7 @@ public class RepaymentManagementCtrl {
     }
 
     private void loadAndShowLoanAccounts(int customerId) {
-        if (Session.getCurrentCustomer() == null) {
+        if (CustomerSession.getCurrentCustomer() == null) {
             new Alert(Alert.AlertType.WARNING, "고객 정보가 없습니다.").showAndWait();
             return;
         }

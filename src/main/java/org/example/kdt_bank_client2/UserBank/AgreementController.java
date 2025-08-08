@@ -1,7 +1,7 @@
 package org.example.kdt_bank_client2.UserBank;
 
 import org.example.kdt_bank_client2.UserBank.model.CustomerInfo;
-import org.example.kdt_bank_client2.UserBank.session.Session;
+import org.example.kdt_bank_client2.UserBank.SessionUser.CustomerSession;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -29,7 +29,7 @@ public class AgreementController {
     @FXML
     public void initialize() {
         // 1) 세션에서 고객 정보 가져오기
-        CustomerInfo cust = Session.getCurrentCustomer();
+        CustomerInfo cust = CustomerSession.getCurrentCustomer();
         if (cust == null) {
             new Alert(Alert.AlertType.WARNING, "먼저 고객을 검색하세요.").showAndWait();
             disableAll();

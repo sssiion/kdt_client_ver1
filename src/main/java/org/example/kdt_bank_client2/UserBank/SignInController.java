@@ -2,7 +2,7 @@
 package org.example.kdt_bank_client2.UserBank;
 
 import org.example.kdt_bank_client2.UserBank.model.EmployeeInfo;
-import org.example.kdt_bank_client2.UserBank.session.Session;
+import org.example.kdt_bank_client2.UserBank.SessionUser.CustomerSession;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -44,7 +44,7 @@ public class SignInController {
                             email,
                             rs.getString("role")
                     );
-                    Session.setCurrentEmployee(emp);
+                    CustomerSession.setCurrentEmployee(emp);
 
                     // 메인 화면으로 전환
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bank2/m_main_view.fxml"));

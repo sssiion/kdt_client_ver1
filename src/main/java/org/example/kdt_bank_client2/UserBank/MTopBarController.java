@@ -1,6 +1,6 @@
 package org.example.kdt_bank_client2.UserBank;
 
-import org.example.kdt_bank_client2.UserBank.session.Session;
+import org.example.kdt_bank_client2.UserBank.SessionUser.CustomerSession;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -34,8 +34,8 @@ public class MTopBarController {
 
     @FXML
     public void handleLogout() {
-        Session.setCurrentEmployee(null);
-        Session.setCurrentCustomer(null);
+        CustomerSession.setCurrentEmployee(null);
+        CustomerSession.setCurrentCustomer(null);
         Stage stage = (Stage) rootHBox.getScene().getWindow();
         stage.close();
         try {

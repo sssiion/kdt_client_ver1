@@ -3,11 +3,7 @@ package org.example.kdt_bank_client2.ControllerUser;
 import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.RequiredArgsConstructor;
 import org.example.kdt_bank_client2.ApiClient;
-import org.example.kdt_bank_client2.ApiResponse;
-import org.example.kdt_bank_client2.DtoUser.AccountResponseDto;
 import org.example.kdt_bank_client2.DtoUser.AgreementResponseDto;
-import org.example.kdt_bank_client2.DtoUser.TransactionRequestDto;
-import org.example.kdt_bank_client2.UserBank.Agreement;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RestController;
 

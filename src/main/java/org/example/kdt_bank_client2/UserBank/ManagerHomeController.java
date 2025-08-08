@@ -1,8 +1,10 @@
 package org.example.kdt_bank_client2.UserBank;
 
-import org.example.kdt_bank_client2.UserBank.model.CustomerInfo;
-import org.example.kdt_bank_client2.UserBank.model.EmployeeInfo;
-import org.example.kdt_bank_client2.UserBank.session.Session;
+
+import lombok.RequiredArgsConstructor;
+import org.example.kdt_bank_client2.ControllerUser.CustomerController;
+import org.example.kdt_bank_client2.DtoUser.CustomerResponseDto;
+import org.example.kdt_bank_client2.UserBank.SessionUser.CustomerSession;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,11 +17,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 
+@Controller
+@RequiredArgsConstructor
 public class ManagerHomeController {
 
     // 직원 정보 관련
@@ -60,6 +65,9 @@ public class ManagerHomeController {
 
     private int currentCustomerId = -1;
 
+    private final CustomerController customerController;
+    private final CustomerSession customerSession;
+
     @FXML
     public void initialize() {
         loadEmployeeInfo();
@@ -70,25 +78,24 @@ public class ManagerHomeController {
         btnLoanRequest.setOnAction(e -> handleLoanRequest());
         btnSearchCustomer.setOnAction(e -> searchCustomer());
         // ADMIN만 대출 승인 버튼 보이게
-        EmployeeInfo emp = Session.getCurrentEmployee();
+        EmployeeInfo emp = CustomerSession.getCurrentEmployee();
         if (emp != null && "ADMIN".equals(emp.getRole())) {
             btnApproveLoan.setVisible(true);
         } else {
             btnApproveLoan.setVisible(false);
         }
         btnApproveLoan.setOnAction(e -> handleApproveLoan());
-        // 프로필(직원 이미지) 클릭 시 로그아웃 및 로그인 화면 이동
-        employeeImage.setOnMouseClicked(e -> handleLogout());
+
 
         // 세션에 고객 정보가 남아 있으면 자동으로 표시
-        CustomerInfo sessCust = Session.getCurrentCustomer();
+        CustomerInfo sessCust = CustomerSession.getCurrentCustomer();
         if (sessCust != null) {
             displayCustomer(sessCust);
         }
     }
 
     private void loadEmployeeInfo() {
-        EmployeeInfo emp = Session.getCurrentEmployee();
+        EmployeeInfo emp = CustomerSession.getCurrentEmployee();
         if (emp == null) {
             new Alert(Alert.AlertType.WARNING, "로그인 정보가 없습니다.").showAndWait();
             return;
@@ -130,43 +137,19 @@ public class ManagerHomeController {
     }
 
     @FXML
-    private void searchCustomer() {
+    private void searchCustomer() throws Exception {
         String name = txtCustomerName.getText().trim();
-        String ssn  = txtCustomerSSN.getText().trim();
+        String ssn  = txtCustomerSSN.getText().trim(); //이름, 주민번호 받아서 > 고객 정보
+
         if (name.isEmpty() || ssn.isEmpty()) {
             showAlert("입력 오류", "고객명과 주민등록번호를 모두 입력해주세요.");
             return;
         }
-        String sql = "SELECT * FROM customer WHERE name = ? AND resident_number = ? AND status = 'ACTIVE'";
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, name);
-            ps.setString(2, ssn);
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    CustomerInfo customer = new CustomerInfo(
-                            rs.getInt("id"),
-                            rs.getString("name"),
-                            rs.getString("resident_number"),
-                            rs.getString("phone"),
-                            rs.getString("email"),
-                            rs.getString("address")
-                    );
-                    Session.setCurrentCustomer(customer);
-                    displayCustomer(customer);
-                } else {
-                    showAlert("검색 결과", "해당 고객을 찾을 수 없습니다.");
-                    customerInfoSection.setVisible(false);
-                    accountInfoSection.setVisible(false);
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            showAlert("오류", "고객 검색 중 오류가 발생했습니다.");
-        }
+        customerSession.incustomer(customerController.getCustomerByNameAndResidentNumber(name, ssn));
     }
 
-    private void displayCustomer(CustomerInfo customer) {
+    private void displayCustomer() {
+        CustomerResponseDto customer = customerSession.getCustomer();
         currentCustomerId = customer.getId();
         lblInfoName.setText(customer.getName());
         lblInfoSSN .setText(customer.getResidentNumber());
@@ -266,25 +249,7 @@ public class ManagerHomeController {
         }
     }
 
-    private void handleLogout() {
-        // 세션 초기화
-        Session.setCurrentEmployee(null);
-        Session.setCurrentCustomer(null);
-        // 현재 창 닫기
-        Stage stage = (Stage) employeeImage.getScene().getWindow();
-        stage.close();
-        // 로그인 화면 열기
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("SignIn.fxml"));
-            Stage loginStage = new Stage();
-            loginStage.setTitle("로그인");
-            loginStage.setScene(new Scene(root));
-            loginStage.show();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            showAlert("오류", "로그인 화면 로딩 실패");
-        }
-    }
+
 
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

@@ -1,15 +1,20 @@
 package org.example.kdt_bank_client2.UserBank;
 
-import org.example.kdt_bank_client2.UserBank.model.CustomerInfo;
-import org.example.kdt_bank_client2.UserBank.session.Session;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import lombok.RequiredArgsConstructor;
+import org.example.kdt_bank_client2.ControllerUser.CustomerController;
+import org.example.kdt_bank_client2.DtoUser.CustomerResponseDto;
+import org.example.kdt_bank_client2.UserBank.SessionUser.CustomerSession;
+import org.springframework.stereotype.Controller;
 
 import java.sql.*;
 
+@Controller
+@RequiredArgsConstructor
 public class AccountTransferController {
 
     @FXML private ListView<Integer> lstAccounts;       // 고객 계좌 목록
@@ -21,11 +26,17 @@ public class AccountTransferController {
     @FXML private Button btnCancel;                   // 취소
 
     private ObservableList<Integer> accountList = FXCollections.observableArrayList();
+    private final CustomerSession customerSession;
+    private CustomerController  customerController;
+
 
     @FXML
     public void initialize() {
-        CustomerInfo customer = Session.getCurrentCustomer();
-        if (customer == null) {
+        CustomerResponseDto customerdto = new CustomerResponseDto();
+        customerController.createCustomer()
+
+        //CustomerInfo customer = CustomerSession.getCurrentCustomer();
+        if (customerSession == null) {
             showAlert(Alert.AlertType.WARNING, "오류", "먼저 고객을 검색해주세요.");
             disableAll();
             return;
@@ -44,7 +55,7 @@ public class AccountTransferController {
         lstAccounts.setDisable(true);
         btnTransfer.setDisable(true);
     }
-
+    // 계좌조회
     private void loadCustomerAccounts(int customerId) {
         accountList.clear();
         String sql = "SELECT account_number FROM account WHERE customer_id = ?";
@@ -68,7 +79,7 @@ public class AccountTransferController {
             txtSelectedAccount.setText(String.valueOf(acc));
         }
     }
-
+    //
     private void onTransfer() {
         String srcAccStr = txtSelectedAccount.getText().trim();
         String dstAccStr = txtTargetAccount.getText().trim();

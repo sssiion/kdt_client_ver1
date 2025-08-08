@@ -1,7 +1,7 @@
 package org.example.kdt_bank_client2.UserBank;
 
 import org.example.kdt_bank_client2.UserBank.model.CustomerInfo;
-import org.example.kdt_bank_client2.UserBank.session.Session;
+import org.example.kdt_bank_client2.UserBank.SessionUser.CustomerSession;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -30,7 +30,7 @@ public class ProductTerminationCtrl {
         colStatus      .setCellValueFactory(cell -> cell.getValue().statusProperty());
 
         // 현재 고객 정보 표시
-        CustomerInfo customer = Session.getCurrentCustomer();
+        CustomerInfo customer = CustomerSession.getCurrentCustomer();
         if (customer == null) {
             showAlert(Alert.AlertType.WARNING, "오류", "먼저 고객을 검색해주세요.");
             return;

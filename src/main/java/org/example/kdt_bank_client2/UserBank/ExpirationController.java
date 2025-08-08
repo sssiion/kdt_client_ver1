@@ -1,7 +1,7 @@
 package org.example.kdt_bank_client2.UserBank;
 
 import org.example.kdt_bank_client2.UserBank.model.CustomerInfo;
-import org.example.kdt_bank_client2.UserBank.session.Session;
+import org.example.kdt_bank_client2.UserBank.SessionUser.CustomerSession;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -26,7 +26,7 @@ public class ExpirationController {
 
     @FXML
     public void initialize() {
-        CustomerInfo cust = Session.getCurrentCustomer();
+        CustomerInfo cust = CustomerSession.getCurrentCustomer();
         if (cust == null) {
             new Alert(Alert.AlertType.WARNING, "먼저 고객을 검색하세요.").showAndWait();
             return;
@@ -76,7 +76,7 @@ public class ExpirationController {
                         "ORDER BY a.closing_date";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setInt(1, Session.getCurrentCustomer().getId());
+            ps.setInt(1, CustomerSession.getCurrentCustomer().getId());
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     expirationList.add(new ExpirationProduct(
@@ -112,7 +112,7 @@ public class ExpirationController {
                         "ORDER BY a.closing_date";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setInt(1, Session.getCurrentCustomer().getId());
+            ps.setInt(1, CustomerSession.getCurrentCustomer().getId());
             ps.setString(2, "%" + prod + "%");
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {

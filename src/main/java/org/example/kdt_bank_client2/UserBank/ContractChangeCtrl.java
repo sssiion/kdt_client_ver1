@@ -1,10 +1,7 @@
 package org.example.kdt_bank_client2.UserBank;
 
 import org.example.kdt_bank_client2.UserBank.model.CustomerInfo;
-import org.example.kdt_bank_client2.UserBank.session.Session;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import org.example.kdt_bank_client2.UserBank.SessionUser.CustomerSession;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
@@ -30,7 +27,7 @@ public class ContractChangeCtrl {
     public void initialize() {
 
             // 고객 정보 확인
-            CustomerInfo cust = Session.getCurrentCustomer();
+            CustomerInfo cust = CustomerSession.getCurrentCustomer();
             if (cust == null) {
                 showAlert("경고", "먼저 고객을 검색하세요.");
                 // UI 비활성화
@@ -66,7 +63,7 @@ public class ContractChangeCtrl {
 
         private void loadAndShowContracts(int customerId) {
             // 고객 정보 확인
-            if (Session.getCurrentCustomer() == null) {
+            if (CustomerSession.getCurrentCustomer() == null) {
                 showAlert("경고", "고객 정보를 찾을 수 없습니다.");
                 return;
             }
@@ -164,7 +161,7 @@ public class ContractChangeCtrl {
 
             showAlert("성공", "대출 계약이 변경되었습니다.");
             // 리스트 갱신
-            loadAndShowContracts(Session.getCurrentCustomer().getId());
+            loadAndShowContracts(CustomerSession.getCurrentCustomer().getId());
             saveChangeBtn.setDisable(true);
         } catch (SQLException ex) {
             ex.printStackTrace();

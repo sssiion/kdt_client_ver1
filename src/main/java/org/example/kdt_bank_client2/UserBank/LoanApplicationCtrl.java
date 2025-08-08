@@ -1,7 +1,7 @@
 package org.example.kdt_bank_client2.UserBank;
 
 import org.example.kdt_bank_client2.UserBank.model.CustomerInfo;
-import org.example.kdt_bank_client2.UserBank.session.Session;
+import org.example.kdt_bank_client2.UserBank.SessionUser.CustomerSession;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,7 +18,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,7 +46,7 @@ public class LoanApplicationCtrl {
 
     @FXML
     public void initialize() {
-        CustomerInfo cust = Session.getCurrentCustomer();
+        CustomerInfo cust = CustomerSession.getCurrentCustomer();
         if (cust == null) {
             new Alert(Alert.AlertType.WARNING, "고객을 먼저 검색하세요.").showAndWait();
             btnUpload.setDisable(true);
@@ -223,7 +222,7 @@ public class LoanApplicationCtrl {
             c.setAutoCommit(false);
 
             try (PreparedStatement ps = c.prepareStatement(insertApplication, Statement.RETURN_GENERATED_KEYS)) {
-                ps.setInt(1, Session.getCurrentCustomer().getId());
+                ps.setInt(1, CustomerSession.getCurrentCustomer().getId());
                 ps.setString(2, selectedProduct.getProduct_name());
                 ps.setDouble(3, requestedAmount);
                 ps.setInt(4, selectedAccount.getAccountNumber());

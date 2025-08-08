@@ -1,6 +1,6 @@
 package org.example.kdt_bank_client2.UserBank;
 
-import org.example.kdt_bank_client2.UserBank.session.Session;
+import org.example.kdt_bank_client2.UserBank.SessionUser.CustomerSession;
 import org.example.kdt_bank_client2.UserBank.model.CustomerInfo;
 
 import javafx.event.ActionEvent;
@@ -168,7 +168,7 @@ public class NewAccountRegistrationCtrl {
         HBox.setHgrow(joinButton, Priority.NEVER);
         
         joinButton.setOnAction(e -> {
-            CustomerInfo customer = Session.getCurrentCustomer();
+            CustomerInfo customer = CustomerSession.getCurrentCustomer();
             if (customer == null) {
                 showAlert("오류", "먼저 고객을 검색하고 로그인해주세요.");
                 return;
