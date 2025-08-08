@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.bank2.ContractChangeCtrl"
+            prefWidth="600" prefHeight="450">
+
+    <!-- 고객 정보 -->
+    <HBox layoutX="20" layoutY="20" spacing="15">
+        <Label text="이름:"/><Label fx:id="lblName"/>
+        <Label text="전화번호:"/><Label fx:id="lblPhone"/>
+        <Label text="주민번호:"/><Label fx:id="lblResident"/>
+        <Label text="이메일:"/><Label fx:id="lblEmail"/>
+        <Label text="주소:"/><Label fx:id="lblAddress"/>
+    </HBox>
+
+    <!-- 보유 대출 계약 리스트 -->
+    <VBox fx:id="contractListVBox"
+          layoutX="20" layoutY="60"
+          prefWidth="560" prefHeight="200"
+          spacing="6"
+          style="-fx-border-color:#ccc; -fx-padding:10;"/>
+
+    <!-- 변경 UI -->
+    <HBox layoutX="20" layoutY="280" spacing="10" alignment="CENTER_LEFT">
+        <Label text="새 만기일:"/>
+        <DatePicker fx:id="newMaturityDatePicker" disable="true"/>
+        <CheckBox fx:id="interestAdjustableCheckBox"
+                  text="금리 조정" disable="true"
+                  onAction="#onInterestAdjustableChanged"/>
+        <TextField fx:id="newInterestRateField" promptText="새 금리" disable="true" prefWidth="80"/>
+
+        <Label text="상환방식:"/>
+        <ComboBox fx:id="repaymentMethodComboBox" disable="true" prefWidth="140"/>
+
+        <Label text="한도:"/>
+        <TextField fx:id="newLimitMoneyField" promptText="새 한도" disable="true" prefWidth="100"/>
+
+        <Button fx:id="saveChangeBtn" text="저장" disable="true" onAction="#onSaveChange"/>
+    </HBox>
+</AnchorPane>

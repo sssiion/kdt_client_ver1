@@ -1,0 +1,71 @@
+
+.button {
+    -fx-min-width: 100;
+    -fx-padding: 20;
+    -fx-background-color: transparent;
+    -fx-font-size: 15;
+
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-border-color: #E5E3DB;
+
+}
+.selectbutton{
+    -fx-pref-width: 100;
+    -fx-pref-height: 50;
+}
+.button:hover{
+    -fx-background-color: #E5E3DB ;
+    -fx-border-color: transparent;
+}
+.TitleLabel{
+    -fx-pref-width: 200;
+
+    -fx-border-color: transparent;
+    -fx-font-weight: bold;
+    -fx-background-color: transparent;
+}
+#TitleButton:hover{
+    -fx-background-color: transparent;
+}
+.text{
+    -fx-font-size: 15;
+}
+#PaneContent *{
+    -fx-font-family: 'Malgun Gothic';
+}
+#PaneContent{
+    -fx-max-height: 900;
+    -fx-max-width: 1100;
+
+}
+#SelectMenu{
+    -fx-background-color: #F2BA0D;
+    -fx-padding: 10;
+}
+#CountTitle{
+    -fx-padding: 20;
+}
+#BlankLabel{
+    -fx-min-width: 800;
+}
+.subproduct{
+    -fx-pref-height: 70;
+}
+.subproduct>.toggle-button{
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+    -fx-padding: 10;
+
+}
+
+.subproduct>.toggle-button:hover{
+    -fx-background-color: transparent;
+}
+.productname{
+    -fx-font-size: 20;
+}
+
+.productValue{
+    -fx-min-width: 700;
+}
