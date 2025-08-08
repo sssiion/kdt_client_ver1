@@ -1,8 +1,8 @@
 // SignInController.java
 package org.example.kdt_bank_client2.UserBank;
 
-import com.example.bank2.model.EmployeeInfo;
-import com.example.bank2.session.Session;
+import org.example.kdt_bank_client2.UserBank.model.EmployeeInfo;
+import org.example.kdt_bank_client2.UserBank.session.Session;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

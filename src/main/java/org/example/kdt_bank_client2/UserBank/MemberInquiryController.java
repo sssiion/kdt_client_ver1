@@ -1,6 +1,6 @@
 package org.example.kdt_bank_client2.UserBank;
 
-import com.example.bank2.model.CustomerInfo;
+import org.example.kdt_bank_client2.UserBank.model.CustomerInfo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

@@ -7,7 +7,7 @@
 
 <HBox fx:id="rootHBox" alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="900.0" spacing="20" style="-fx-background-color: #ffffff; -fx-border-color: #e0e0e0; -fx-border-width: 0 0 1 0;" xmlns="http://javafx.com/javafx/17.0.12"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.bank2.MTopBarController">
+      fx:controller="org.example.kdt_bank_client2.UserBank.MTopBarController">
 
     <padding>
         <Insets bottom="10" left="20" right="20" top="10" />

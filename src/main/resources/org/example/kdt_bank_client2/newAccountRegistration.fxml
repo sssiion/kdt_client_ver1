@@ -11,7 +11,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.bank2.NewAccountRegistrationCtrl">
+            fx:controller="org.example.kdt_bank_client2.UserBank.NewAccountRegistrationCtrl">
     <VBox stylesheets="@test.css" alignment="TOP_CENTER" 
           AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" 
           AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
