@@ -1,1 +1,0 @@
-# kdt_client_ver1
