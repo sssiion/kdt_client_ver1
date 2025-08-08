@@ -1,7 +1,7 @@
 package org.example.kdt_bank_client2.DtoUser;
 
 
-import com.example.KDT_bank_server_project2.manager.EntityUser.Customer;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -18,17 +18,7 @@ public class CustomerSummaryDto {
     private String name;
     private String email;
     private String phone;
-    private Customer.CustomerStatus status;
+    private String status;
 
-    public CustomerSummaryDto(Customer customer) {
-        this.id = customer.getId();
-        this.name = customer.getName();
-        this.email = customer.getEmail();
-        this.phone = customer.getPhone();
-        this.status = customer.getStatus();
-        System.out.println("CustomerSummaryDto 생성: " + name +
-                ", email: " + email +
-                ", status: " + status);
-    }
 
 }

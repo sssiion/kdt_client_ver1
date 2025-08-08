@@ -2,9 +2,6 @@ package org.example.kdt_bank_client2.DtoUser;
 
 
 
-import com.example.KDT_bank_server_project2.manager.EntityUser.CashTransaction;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;

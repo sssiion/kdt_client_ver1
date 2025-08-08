@@ -19,26 +19,9 @@ public class EmployeeResponseDto {
     private String name;
     private String email;
     private String department;
-    private BankEmployee.EmployeeRole role;
+    private String role;
     private String phone;
-    private BankEmployee.EmployeeStatus status;
+    private String status;
     private LocalDateTime createdAt;
 
-    public EmployeeResponseDto(BankEmployee employee) {
-        this.employeeId = employee.getEmployeeId();
-        this.name = employee.getName();
-        this.email = employee.getEmail();
-        this.department = employee.getDepartment();
-        this.role = employee.getRole();
-        this.phone = employee.getPhone();
-        this.status = employee.getStatus();
-        this.createdAt = employee.getCreatedAt();
-        System.out.println("EmployeeResponseDto 생성: " + name +
-                ", department: " + department +
-                ", role: " + role +
-                ", status: " + status);
-    }
-    public static EmployeeResponseDto from(BankEmployee customer) {
-        return new EmployeeResponseDto(customer);
-    }
 }
