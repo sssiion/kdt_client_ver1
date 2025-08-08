@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.kdt_bank_client2.UserBank.NewMemberController"
+            fitToWidth="true"
+            style="-fx-background-color: #FAFAFA;">
+
+    <VBox layoutX="250.0" prefWidth="850.0" spacing="20" style="-fx-padding: 20;">
+
+        <!-- 제목 -->
+        <Label text="신규 고객 등록"
+               style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+        <!-- 입력 폼 -->
+        <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20;
+                                  -fx-background-radius: 10; -fx-border-color: #EEE; -fx-border-width: 1;">
+
+            <!-- 이름 -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="이름" prefWidth="120" style="-fx-font-size: 16; -fx-text-fill: #555;"/>
+                <TextField fx:id="txtName" promptText="고객 이름 입력"
+                           prefWidth="400"
+                           style="-fx-background-color: #F9F9F9; -fx-border-color: #DDD; -fx-background-radius: 5;"/>
+            </HBox>
+
+            <!-- 이메일 -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="이메일" prefWidth="120" style="-fx-font-size: 16; -fx-text-fill: #555;"/>
+                <TextField fx:id="txtEmail" promptText="example@bank.com"
+                           prefWidth="400"
+                           style="-fx-background-color: #F9F9F9; -fx-border-color: #DDD; -fx-background-radius: 5;"/>
+            </HBox>
+
+            <!-- 비밀번호 -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="비밀번호" prefWidth="120" style="-fx-font-size: 16; -fx-text-fill: #555;"/>
+                <PasswordField fx:id="txtPassword" promptText="비밀번호 입력"
+                               prefWidth="400"
+                               style="-fx-background-color: #F9F9F9; -fx-border-color: #DDD; -fx-background-radius: 5;"/>
+            </HBox>
+
+            <!-- 주민번호 -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="주민번호" prefWidth="120" style="-fx-font-size: 16; -fx-text-fill: #555;"/>
+                <TextField fx:id="txtResidentId" promptText="000000-0000000"
+                           prefWidth="400"
+                           style="-fx-background-color: #F9F9F9; -fx-border-color: #DDD; -fx-background-radius: 5;"/>
+            </HBox>
+
+
+
+            <!-- 전화번호 -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="전화번호" prefWidth="120" style="-fx-font-size: 16; -fx-text-fill: #555;"/>
+                <TextField fx:id="txtPhone" promptText="010-0000-0000"
+                           prefWidth="400"
+                           style="-fx-background-color: #F9F9F9; -fx-border-color: #DDD; -fx-background-radius: 5;"/>
+            </HBox>
+
+            <!-- 집주소 -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="집주소" prefWidth="120" style="-fx-font-size: 16; -fx-text-fill: #555;"/>
+                <TextField fx:id="txtAddress" promptText="고객 집주소 입력"
+                           prefWidth="400"
+                           style="-fx-background-color: #F9F9F9; -fx-border-color: #DDD; -fx-background-radius: 5;"/>
+            </HBox>
+        </VBox>
+
+        <!-- 버튼 영역 -->
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <Button fx:id="btnCancel" text="취소" prefWidth="120" prefHeight="40"
+                    style="-fx-background-color: #F5F5F5; -fx-border-color: #DDD; -fx-background-radius: 8;"/>
+            <Button fx:id="btnRegister" text="등록" prefWidth="120" prefHeight="40"
+                    style="-fx-background-color: #EFEFEF; -fx-border-color: #DDD; -fx-background-radius: 8;"/>
+        </HBox>
+
+    </VBox>
+</ScrollPane>

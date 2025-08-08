@@ -5,7 +5,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.bank2.ContractChangeCtrl"
+            fx:controller="org.example.kdt_bank_client2.UserBank.ContractChangeCtrl"
             prefWidth="600" prefHeight="450">
 
     <!-- 고객 정보 -->

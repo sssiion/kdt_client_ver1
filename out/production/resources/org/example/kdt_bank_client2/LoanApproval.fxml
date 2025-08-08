@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.kdt_bank_client2.UserBank.LoanApprovalController" spacing="15" style="-fx-padding: 20;">
+    <Label text="대출 승인 관리" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button fx:id="btnRefresh" text="새로고침" style="-fx-background-color: #0d6da9; -fx-text-fill: white;"/>
+    </HBox>
+    <TableView fx:id="tableApplications" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colAppId" text="신청번호" prefWidth="80"/>
+            <TableColumn fx:id="colCustomerName" text="고객명" prefWidth="120"/>
+            <TableColumn fx:id="colProductName" text="상품명" prefWidth="120"/>
+            <TableColumn fx:id="colRequestedAmount" text="신청금액" prefWidth="100"/>
+            <TableColumn fx:id="colStatus" text="상태" prefWidth="80"/>
+            <TableColumn fx:id="colAppDate" text="신청일" prefWidth="120"/>
+        </columns>
+    </TableView>
+    <Label text="첨부 서류 (더블클릭하여 열기)" style="-fx-font-weight: bold;"/>
+    <ListView fx:id="docListView" prefHeight="100"/>
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="btnApprove" text="승인" prefWidth="100" style="-fx-background-color: #0d6da9; -fx-text-fill: white;"/>
+        <Button fx:id="btnReject" text="거절" prefWidth="100" style="-fx-background-color: #d32f2f; -fx-text-fill: white;"/>
+    </HBox>
+</VBox>

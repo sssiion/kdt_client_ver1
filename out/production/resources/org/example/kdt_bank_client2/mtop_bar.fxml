@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox fx:id="rootHBox" alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="900.0" spacing="20" style="-fx-background-color: #ffffff; -fx-border-color: #e0e0e0; -fx-border-width: 0 0 1 0;" xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.kdt_bank_client2.UserBank.MTopBarController">
+
+    <padding>
+        <Insets bottom="10" left="20" right="20" top="10" />
+    </padding>
+
+    <!-- 로고 이미지 ($ 아이콘) -->
+    <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@images/dollar_icon.png" />  <!-- 프로젝트 resources 폴더에 dollar_icon.png 넣기 -->
+        </image>
+    </ImageView>
+
+    <!-- 은행 이름 -->
+    <Button onAction="#NuriBankButton" style=" -fx-background-color: transparent; -fx-font-size: 16px; -fx-font-family: 'Malgun Gothic'; -fx-font-weight: bold;" text="누리은행" />
+
+    <!-- 공간 확보 -->
+    <Region HBox.hgrow="ALWAYS" />
+
+    <!-- 우측 알림 아이콘 -->
+    <Button style="-fx-background-color: transparent;" />
+
+
+    <ImageView  fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@images/bell.png" />
+        </image>
+    </ImageView>
+
+    <!-- 우측 프로필 아이콘 -->
+    <Button onAction="#handleLogout" style="-fx-background-color: transparent;">
+        <graphic>
+            <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@images/profile.png" />
+                </image>
+            </ImageView>
+        </graphic>
+    </Button>
+</HBox>

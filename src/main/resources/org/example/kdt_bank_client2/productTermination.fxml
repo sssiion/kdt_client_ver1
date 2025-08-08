@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.bank2.ProductTerminationCtrl"
+            prefWidth="600" prefHeight="400">
+
+    <VBox spacing="10" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10"
+          AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10">
+
+        <!-- 현재 고객 정보 표시 -->
+        <HBox spacing="20" alignment="CENTER_LEFT">
+            <Label text="고객명:"/>
+            <Label fx:id="lblCustomerName" style="-fx-font-weight:bold;"/>
+            <Label text="주민번호:"/>
+            <Label fx:id="lblCustomerSSN" style="-fx-font-weight:bold;"/>
+        </HBox>
+
+        <!-- 계좌 테이블 -->
+        <TableView fx:id="accountTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colAccountNumber" text="계좌번호" prefWidth="180"/>
+                <TableColumn fx:id="colProductName"   text="상품명"   prefWidth="200"/>
+                <TableColumn fx:id="colStatus"        text="상태"     prefWidth="120"/>
+            </columns>
+        </TableView>
+
+        <!-- 삭제 버튼 -->
+        <HBox alignment="CENTER_RIGHT">
+            <Button text="계좌 삭제" fx:id="btnDeleteAccount" onAction="#onDeleteAccount"/>
+        </HBox>
+    </VBox>
+</AnchorPane>

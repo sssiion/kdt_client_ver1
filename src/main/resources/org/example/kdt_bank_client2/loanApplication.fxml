@@ -5,7 +5,7 @@
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.bank2.LoanApplicationCtrl"
+      fx:controller="org.example.kdt_bank_client2.UserBank.LoanApplicationCtrl"
       spacing="20">
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>

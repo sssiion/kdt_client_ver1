@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.bank2.NewAccountRegistrationCtrl">
+    <VBox stylesheets="@test.css" alignment="TOP_CENTER" 
+          AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" 
+          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <VBox fx:id="PaneContent" alignment="CENTER" VBox.vgrow="ALWAYS">
+            <VBox fx:id="SelectMenu" alignment="CENTER" 
+                  prefHeight="200.0" maxHeight="250.0" minHeight="150.0"
+                  VBox.vgrow="NEVER">
+                <HBox alignment="CENTER_LEFT" prefHeight="80.0" 
+                      HBox.hgrow="ALWAYS" spacing="10">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <Label alignment="CENTER" styleClass="TitleLabel" text="상품 유형" 
+                           HBox.hgrow="NEVER"/>
+                    <FlowPane HBox.hgrow="ALWAYS" hgap="8" vgap="8" 
+                             alignment="CENTER_LEFT">
+                        <Button fx:id="btnAll" text="전체" onAction="#onCategorySelect" 
+                                styleClass="category-button"/>
+                        <Button fx:id="btnDeachul" text="입출금 통장" userData="deachul" 
+                                onAction="#onCategorySelect" styleClass="category-button"/>
+                        <Button fx:id="btnJeonggi" text="정기 예금" userData="junggi" 
+                                onAction="#onCategorySelect" styleClass="category-button"/>
+                        <Button fx:id="btnJeogeum" text="적금" userData="jeogeum" onAction="#onCategorySelect" 
+                                styleClass="category-button"/>
+                        <Button fx:id="btnYeongeum" text="연금저축 계좌" userData="yeongeum" onAction="#onCategorySelect" 
+                                styleClass="category-button"/>
+                        <Button fx:id="btnISA" text="ISA(개인종합자산관리계좌)" userData="isa" onAction="#onCategorySelect" 
+                                styleClass="category-button"/>
+                        <Button fx:id="btnCMA" text="CMA(종합자산관리계좌)" userData="cma" onAction="#onCategorySelect" 
+                                styleClass="category-button"/>
+                        <Button fx:id="btnFund" text="펀드" userData="fund" onAction="#onCategorySelect" 
+                                styleClass="category-button"/>
+                        <Button fx:id="btnCard" text="신용카드 연계 계좌" userData="card" onAction="#onCategorySelect" 
+                                styleClass="category-button"/>
+                    </FlowPane>
+                </HBox>
+                <Line endX="800.0" style="-fx-stroke: #E5E3DB;"
+                      HBox.hgrow="ALWAYS"/>
+            </VBox>
+            <HBox fx:id="CountTitle" prefHeight="60.0" maxHeight="80.0" 
+                  HBox.hgrow="ALWAYS" alignment="CENTER_LEFT" spacing="10">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                <Text fx:id="productcount" HBox.hgrow="NEVER"/>
+                <Label fx:id="BlankLabel" HBox.hgrow="ALWAYS"/>
+                <Text text=" 0000.00.00 기준 " HBox.hgrow="NEVER"/>
+            </HBox>
+            <Line endX="800.0" style="-fx-stroke-width: 2; -fx-stroke: black;"
+                  HBox.hgrow="ALWAYS"/>
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+                <content>
+                    <VBox fx:id="productValue" spacing="10" VBox.vgrow="ALWAYS">
+                        <padding>
+                            <Insets top="10" right="10" bottom="10" left="10"/>
+                        </padding>
+                    </VBox>
+                </content>
+            </ScrollPane>
+        </VBox>
+    </VBox>
+</AnchorPane>
+
+

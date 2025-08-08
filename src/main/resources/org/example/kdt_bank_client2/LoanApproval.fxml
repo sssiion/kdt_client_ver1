@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bank2.LoanApprovalController" spacing="15" style="-fx-padding: 20;">
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.kdt_bank_client2.UserBank.LoanApprovalController" spacing="15" style="-fx-padding: 20;">
     <Label text="대출 승인 관리" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
     <HBox spacing="10" alignment="CENTER_LEFT">
         <Button fx:id="btnRefresh" text="새로고침" style="-fx-background-color: #0d6da9; -fx-text-fill: white;"/>

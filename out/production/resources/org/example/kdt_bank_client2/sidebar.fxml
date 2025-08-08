@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:controller="org.example.kdt_bank_client2.UserBank.SidebarController" xmlns:fx="http://javafx.com/fxml" prefWidth="200" prefHeight="300">
+
+    <!-- 왼쪽 세로 메뉴 -->
+    <VBox prefWidth="200.0" layoutX="0" layoutY="0" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0">
+
+        <!-- 메뉴 1 -->
+        <VBox>
+            <Button fx:id="menu1Header" text="▼ 계정/고객 정보 관리" prefWidth="200" onAction="#toggleMenu1"
+                    style="-fx-background-color: #f0f0f0; -fx-alignment: center-left; -fx-font-family: '맑은 고딕';"/>
+            <VBox fx:id="menu1Content" style="-fx-padding:10;">
+                <Button text="• 신규 고객 등록" prefWidth="190" onAction="#customerAdd"
+                        style="-fx-background-color: transparent; -fx-font-family: '맑은 고딕'; -fx-alignment: center-left;"/>
+                <Button text="• 고객 정보 검색/조회" prefWidth="190" onAction="#customerSearch"
+                        style="-fx-background-color: transparent; -fx-font-family: '맑은 고딕'; -fx-alignment: center-left;"/>
+                <Button text="• 고객 정보 변경" prefWidth="190" onAction="#customerInfoChange"
+                        style="-fx-background-color: transparent; -fx-font-family: '맑은 고딕'; -fx-alignment: center-left;"/>
+            </VBox>
+        </VBox>
+
+        <!-- 메뉴 2 -->
+        <VBox>
+            <Button fx:id="menu2Header" text="▼ 계좌 관리 및 상품 가입" prefWidth="200" onAction="#toggleMenu2"
+                    style="-fx-background-color: #f0f0f0; -fx-alignment: center-left; -fx-font-family: '맑은 고딕';"/>
+            <VBox fx:id="menu2Content" style="-fx-padding:10;">
+                <Button text="• 신규 계좌/ 상품 가입" prefWidth="190" onAction="#newAccountRegistration"
+                        style="-fx-background-color: transparent; -fx-font-family: '맑은 고딕'; -fx-alignment: center-left;"/>
+                <Button text="• 상품 해지" prefWidth="190" onAction="#productTermination"
+                        style="-fx-background-color: transparent; -fx-font-family: '맑은 고딕'; -fx-alignment: center-left;"/>
+            </VBox>
+        </VBox>
+
+        <!-- 메뉴 3 -->
+        <VBox>
+            <Button fx:id="menu3Header" text="▼ 고객 거래" prefWidth="200" onAction="#toggleMenu3"
+                    style="-fx-background-color: #f0f0f0; -fx-alignment: center-left; -fx-font-family: '맑은 고딕';"/>
+            <VBox fx:id="menu3Content" style="-fx-padding:10;">
+                <Button text="• 현금 입출금" prefWidth="190" onAction="#cashDeposit"
+                        style="-fx-background-color: transparent; -fx-font-family: '맑은 고딕'; -fx-alignment: center-left;"/>
+                <Button text="• 계좌이체" prefWidth="190" onAction="#accountTransfer"
+                        style="-fx-background-color: transparent; -fx-font-family: '맑은 고딕'; -fx-alignment: center-left;"/>
+<!--                <Button text="• 출금 한도 설정" prefWidth="190" onAction="#withdrawalLimitSetting"-->
+<!--                        style="-fx-background-color: transparent; -fx-font-family: '맑은 고딕'; -fx-alignment: center-left;"/>-->
+            </VBox>
+        </VBox>
+
+        <!-- 메뉴 4 -->
+        <VBox>
+            <Button fx:id="menu4Header" text="▼ 대출/신용 업무" prefWidth="200" onAction="#toggleMenu4"
+                    style="-fx-background-color: #f0f0f0; -fx-alignment: center-left; -fx-font-family: '맑은 고딕';"/>
+            <VBox fx:id="menu4Content" style="-fx-padding:10;">
+                <Button text="• 대출 신청 및 심사" prefWidth="190" onAction="#loanApplication"
+                        style="-fx-background-color: transparent; -fx-font-family: '맑은 고딕'; -fx-alignment: center-left;"/>
+                <Button text="• 약정 변경" prefWidth="190" onAction="#contractChange"
+                        style="-fx-background-color: transparent; -fx-font-family: '맑은 고딕'; -fx-alignment: center-left;"/>
+                <Button text="• 상환 관리" prefWidth="190" onAction="#repaymentManagement"
+                        style="-fx-background-color: transparent; -fx-font-family: '맑은 고딕'; -fx-alignment: center-left;"/>
+
+            </VBox>
+        </VBox>
+
+        <!-- 메뉴 5 -->
+        <VBox>
+            <Button fx:id="menu5Header" text="▼ 고객 한도/계약 관리" prefWidth="200" onAction="#toggleMenu5"
+                    style="-fx-background-color: #f0f0f0; -fx-alignment: center-left; -fx-font-family: '맑은 고딕';"/>
+            <VBox fx:id="menu5Content" style="-fx-padding:10;">
+                <Button text="• 약정 관리" prefWidth="190" onAction="#contractManagement"
+                        style="-fx-background-color: transparent; -fx-font-family: '맑은 고딕'; -fx-alignment: center-left;"/>
+                <Button text="• 만기상품 확인" prefWidth="190" onAction="#maturityProductCheck"
+                        style="-fx-background-color: transparent; -fx-font-family: '맑은 고딕'; -fx-alignment: center-left;"/>
+            </VBox>
+        </VBox>
+
+    </VBox>
+
+</AnchorPane>

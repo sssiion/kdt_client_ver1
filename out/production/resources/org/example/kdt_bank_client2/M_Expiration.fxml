@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.kdt_bank_client2.UserBank.ExpirationController"
+      spacing="15">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+
+    <!-- 고객 정보 -->
+    <TitledPane text="고객 정보" expanded="true">
+        <content>
+            <GridPane hgap="10" vgap="8">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="15"/>
+                    <ColumnConstraints percentWidth="35"/>
+                    <ColumnConstraints percentWidth="15"/>
+                    <ColumnConstraints percentWidth="35"/>
+                </columnConstraints>
+                <Label text="이름:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Label fx:id="lblName" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label text="주민번호:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                <Label fx:id="lblResident" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                <Label text="전화번호:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label fx:id="lblPhone" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label text="이메일:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                <Label fx:id="lblEmail" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+                <Label text="주소:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label fx:id="lblAddress" GridPane.rowIndex="2" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
+            </GridPane>
+        </content>
+    </TitledPane>
+
+    <!-- 검색 영역 -->
+    <HBox spacing="10">
+        <Label text="상품명:"/>
+        <TextField fx:id="txtProductName" promptText="상품명 검색"/>
+        <Button text="검색" fx:id="btnSearch"/>
+        <Button text="새로고침" fx:id="btnRefresh"/>
+    </HBox>
+
+    <!-- 테이블 -->
+    <TableView fx:id="tableExpiration" prefHeight="450">
+        <columns>
+            <TableColumn fx:id="colAccountNumber" text="계좌번호" prefWidth="120"/>
+            <TableColumn fx:id="colProductName"   text="상품명" prefWidth="120"/>
+            <TableColumn fx:id="colOpeningDate"   text="개설일자" prefWidth="100"/>
+            <TableColumn fx:id="colMaturityDate"  text="만기일자" prefWidth="100"/>
+            <TableColumn fx:id="colBalance"       text="잔액" prefWidth="100"/>
+            <TableColumn fx:id="colStatus"        text="상태" prefWidth="100"/>
+        </columns>
+    </TableView>
+</VBox>

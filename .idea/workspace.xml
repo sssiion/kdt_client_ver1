@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c6ca4a95-beb0-48cc-beb0-3aa734df96e2" name="변경" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="30zBIbbmgWDH7iPMqDGZtHhmYzP" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.KdtBankServerProject2Application.executor": "Run",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/USER/Documents/GitHub/kdt_client_ver1/src/main/java/org/example/kdt_bank_client2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "모듈",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true",
+    "애플리케이션.UnifiedApplication.executor": "Run"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\USER\Documents\GitHub\kdt_client_ver1\src\main\java\org\example\kdt_bank_client2" />
+      <recent name="C:\Users\USER\Documents\GitHub\kdt_client_ver1\src\main\java\org\example\kdt_bank_client2\UserBank" />
+      <recent name="C:\Users\USER\Documents\GitHub\kdt_client_ver1\src\main\resources\org\example\kdt_bank_client2" />
+    </key>
+  </component>
+  <component name="RunManager" selected="애플리케이션.UnifiedApplication">
+    <configuration name="UnifiedApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.kdt_bank_client2.UnifiedApplication" />
+      <module name="kdt_client_ver1.main" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\USER\Downloads\openjfx-21.0.8_windows-x64_bin-sdk\javafx-sdk-21.0.8\lib&quot; --add-modules=javafx.fxml,javafx.controls" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.kdt_bank_client2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="kdt_client_ver1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="kdt_client_ver1" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <configuration name="KdtBankServerProject2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="kdt_client_ver1.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.kdt_bank_client2.KdtBankServerProject2Application" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\USER\Downloads\openjfx-21.0.8_windows-x64_bin-sdk\javafx-sdk-21.0.8\lib&quot; --add-modules=javafx.fxml,javafx.controls" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.KdtBankServerProject2Application" />
+      <item itemvalue="애플리케이션.UnifiedApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="애플리케이션.UnifiedApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.27812.49" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-IU-251.27812.49" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="c6ca4a95-beb0-48cc-beb0-3aa734df96e2" name="변경" comment="" />
+      <created>1754620441591</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1754620441591</updated>
+      <workItem from="1754620442796" duration="3154000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

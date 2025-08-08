@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.kdt_bank_client2.UserBank.AccountTransferController"
+            prefWidth="900" prefHeight="600"
+            style="-fx-background-color: #FAFAFA;">
+
+    <!-- 좌측: 고객 계좌 목록 -->
+    <left>
+        <VBox spacing="10">
+            <!-- padding을 Insets로 지정 -->
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="나의 계좌 목록"
+                   style="-fx-font-size:18; -fx-font-weight:bold;"/>
+            <ListView fx:id="lstAccounts"
+                      prefWidth="200" prefHeight="500"/>
+        </VBox>
+    </left>
+
+    <!-- 중앙: 송금 폼 -->
+    <center>
+        <VBox spacing="20">
+            <!-- padding을 Insets로 지정 -->
+            <padding>
+                <Insets top="30" right="30" bottom="30" left="30"/>
+            </padding>
+
+            <!-- 출금 계좌번호 -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="출금 계좌번호:" prefWidth="120" style="-fx-font-size:16;"/>
+                <TextField fx:id="txtSelectedAccount" editable="false" prefWidth="300"/>
+            </HBox>
+
+            <!-- 입금 계좌번호 -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="입금 계좌번호:" prefWidth="120" style="-fx-font-size:16;"/>
+                <TextField fx:id="txtTargetAccount" prefWidth="300"/>
+            </HBox>
+
+            <!-- 이체 금액 -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="이체 금액:" prefWidth="120" style="-fx-font-size:16;"/>
+                <TextField fx:id="txtAmount" prefWidth="300"/>
+            </HBox>
+
+            <!-- 비고 -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="비고:" prefWidth="120" style="-fx-font-size:16;"/>
+                <TextField fx:id="txtNote" prefWidth="300"/>
+            </HBox>
+
+            <!-- 버튼 -->
+            <HBox spacing="20" alignment="CENTER_RIGHT">
+                <Button fx:id="btnCancel" text="취소"
+                        style="-fx-background-color:#ddd; -fx-background-radius:5;"
+                        prefWidth="100" prefHeight="35"/>
+                <Button fx:id="btnTransfer" text="송금 실행"
+                        style="-fx-background-color:#4CAF50; -fx-text-fill:white; -fx-background-radius:5;"
+                        prefWidth="120" prefHeight="35"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
