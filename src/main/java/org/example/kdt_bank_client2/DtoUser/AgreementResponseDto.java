@@ -14,15 +14,13 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @AllArgsConstructor
-public class AgreementResponseDto {
+public class AgreementResponseDto { // 계약 응답
 
-    private Long agreementId;
-    private Long customerId;
-    private String customerName;
-    private String productName;
-    private LocalDate agreementDate;
+    private String agreementId;
+    private String customerId; // 사용자 아이디
+    private String productName; // 상품명
+    private LocalDate agreementDate; //
     private LocalDate expirationDate;
-    private String status;
     private String note;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

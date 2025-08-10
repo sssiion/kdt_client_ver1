@@ -16,11 +16,12 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class AccountCreateRequestDto {
 
-    private Long customerId;
+    private String customerId;
     private String productName;
     private BigDecimal amount;
     private LocalDate openingDate;
     private LocalDate closingDate;
 
     private String productType;
+    public AccountCreateRequestDto(){};
 }

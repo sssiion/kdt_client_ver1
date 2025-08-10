@@ -17,7 +17,7 @@ import java.time.LocalDate;
 public class AgreementCreateRequestDto {
 
 
-    private Long customerId;
+    private String customerId;
     private String productName;
     private LocalDate agreementDate;
     private LocalDate expirationDate;

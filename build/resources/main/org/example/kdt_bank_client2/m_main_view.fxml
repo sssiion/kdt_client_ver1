@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.kdt_bank_client2.UserBank.M_MainController" prefWidth="1100" prefHeight="900">
+
+    <!-- 상단 고정 -->
+    <top>
+        <VBox fx:id="topBarContainer" />
+    </top>
+
+    <!-- 좌측 고정 사이드바 -->
+    <left>
+        <AnchorPane fx:id="sideBarContainer" />
+    </left>
+
+    <!-- 중앙 화면 전환영역 -->
+    <center>
+        <StackPane fx:id="stackPane" />
+    </center>
+
+</BorderPane>

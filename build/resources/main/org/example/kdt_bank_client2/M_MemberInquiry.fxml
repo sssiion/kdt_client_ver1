@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.kdt_bank_client2.UserBank.MemberInquiryController"
+            fitToWidth="true"
+            style="-fx-background-color: #FAFAFA;">
+
+    <VBox layoutX="250.0" prefWidth="850.0" spacing="20" style="-fx-padding: 20;">
+
+        <!-- 제목 -->
+        <Label text="고객 정보 검색 / 조회"
+               style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+        <!-- 검색 패널 -->
+        <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 15;
+                                  -fx-background-radius: 10; -fx-border-color: #EEE; -fx-border-width: 1;">
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="검색어" prefWidth="100" style="-fx-font-size: 16; -fx-text-fill: #555;"/>
+                <TextField fx:id="txtSearch" promptText="고객 이름 또는 전화번호 입력"
+                           prefWidth="400"
+                           style="-fx-background-color: #F9F9F9; -fx-border-color: #DDD; -fx-background-radius: 5;"/>
+                <Button fx:id="btnSearch" text="검색" prefWidth="100" prefHeight="35"
+                        style="-fx-background-color: #F5F5F5; -fx-border-color: #DDD; -fx-background-radius: 8;"/>
+            </HBox>
+        </VBox>
+
+        <!-- 검색 결과 테이블 -->
+        <TableView fx:id="tableCustomers" prefHeight="500"
+                   style="-fx-background-color: white; -fx-border-color: #EEE;">
+            <columns>
+                <TableColumn fx:id="colName" text="이름" prefWidth="150"/>
+                <TableColumn fx:id="colResidentNumber" text="생년월일" prefWidth="150"/>
+                <TableColumn fx:id="colPhone" text="전화번호" prefWidth="200"/>
+                <TableColumn fx:id="colAddress" text="주소" prefWidth="300"/>
+            </columns>
+        </TableView>
+
+        <!-- 상세정보 보기 버튼 -->
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <Button fx:id="btnViewDetails" text="상세 정보 보기" prefWidth="150" prefHeight="40"
+                    style="-fx-background-color: #F5F5F5; -fx-text-fill: #333; -fx-border-color: #DDD; -fx-background-radius: 8;"/>
+        </HBox>
+
+    </VBox>
+</ScrollPane>

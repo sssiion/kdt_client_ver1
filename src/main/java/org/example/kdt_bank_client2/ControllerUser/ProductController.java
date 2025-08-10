@@ -17,6 +17,7 @@ public class ProductController {
     private final ApiClient api;
 
     // POST /api/products
+    // 상품 생성
     public ApiResponse<ProductResponseDto> createProduct(ProductCreateRequestDto dto) throws Exception {
         return api.post("/api/products",
                 dto,
@@ -24,6 +25,7 @@ public class ProductController {
     }
 
     // GET /api/products
+    //모든 상품 조회
     public ApiResponse<List<ProductResponseDto>> getAllProducts() throws Exception {
         return api.get("/api/products",
                 new TypeReference<ApiResponse<List<ProductResponseDto>>>() {});

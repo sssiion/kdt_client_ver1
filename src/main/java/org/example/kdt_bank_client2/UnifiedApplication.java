@@ -18,7 +18,7 @@ import java.io.IOException;
 
 
 public class UnifiedApplication extends Application {
-    private ConfigurableApplicationContext springContext;
+    public static ConfigurableApplicationContext springContext;
 
     @Override
     public void start(Stage primaryStage) {
@@ -38,7 +38,7 @@ public class UnifiedApplication extends Application {
         employeeButton.setPrefSize(200, 50);
         employeeButton.setOnAction(e -> openEmployeeSystem(stage));
 
-        Button customerButton = new Button("고객 채팅 시스템");
+        Button customerButton = new Button("채팅 시스템");
         customerButton.setPrefSize(200, 50);
         customerButton.setOnAction(e -> openCustomerSystem(stage));
 
@@ -51,11 +51,13 @@ public class UnifiedApplication extends Application {
 
     private void openEmployeeSystem(Stage stage) {
         // 기존 직원 FXML 시스템 실행
+        initSpringContext();
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("M_signin_form.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/kdt_bank_client2/M_signin_From.fxml"));
+            loader.setControllerFactory(springContext::getBean);
             Scene scene = new Scene(loader.load(), 1100, 900);
             stage.setScene(scene);
-            stage.setTitle("직원 시스템");
+            //stage.setTitle("직원 시스템");
         } catch (IOException e) {
             e.printStackTrace();
         }

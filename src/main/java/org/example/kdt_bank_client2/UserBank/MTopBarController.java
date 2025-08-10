@@ -1,5 +1,9 @@
 package org.example.kdt_bank_client2.UserBank;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import org.example.kdt_bank_client2.Session.UserSession;
 import org.example.kdt_bank_client2.UserBank.SessionUser.CustomerSession;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,20 +11,24 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import java.io.IOException;
+import org.springframework.stereotype.Controller;
 
+import java.io.IOException;
+@Controller
+@RequiredArgsConstructor
+@Setter
+@Getter
 public class MTopBarController {
     @FXML private HBox rootHBox;
 
     private M_MainController mainController;
-
+    private final CustomerSession customerSession;
+    private final UserSession userSession;
     public void setMainController(M_MainController mainController) {
         this.mainController = mainController;
     }
 
-    @FXML
-    public void initialize() {
-    }
+
 
     @FXML
     private void NuriBankButton() {
@@ -34,12 +42,12 @@ public class MTopBarController {
 
     @FXML
     public void handleLogout() {
-        CustomerSession.setCurrentEmployee(null);
-        CustomerSession.setCurrentCustomer(null);
+        customerSession.setCustomerResponseDto(null);
+        userSession.setCurrentUser(null);
         Stage stage = (Stage) rootHBox.getScene().getWindow();
         stage.close();
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("M_signin_form.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("M_signin_Form.fxml"));
             Stage loginStage = new Stage();
             loginStage.setTitle("로그인");
             loginStage.setScene(new Scene(root));

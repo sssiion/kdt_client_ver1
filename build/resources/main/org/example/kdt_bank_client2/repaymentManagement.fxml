@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.kdt_bank_client2.UserBank.RepaymentManagementCtrl"
+            prefWidth="600" prefHeight="500">
+
+    <!-- 고객 정보 -->
+    <HBox layoutX="20" layoutY="20" spacing="15">
+        <Label text="이름:"/><Label fx:id="lblName"/>
+        <Label text="전화번호:"/><Label fx:id="lblPhone"/>
+        <Label text="주민번호:"/><Label fx:id="lblResident"/>
+        <Label text="이메일:"/><Label fx:id="lblEmail"/>
+        <Label text="주소:"/><Label fx:id="lblAddress"/>
+    </HBox>
+
+    <!-- 대출 계좌 리스트 -->
+    <VBox fx:id="loanAccountsVBox"
+          layoutX="20" layoutY="80"
+          prefWidth="560" prefHeight="380"
+          spacing="8"
+          style="-fx-border-color:#ccc; -fx-padding:10; -fx-background-color:#fefefe;"/>
+
+</AnchorPane>

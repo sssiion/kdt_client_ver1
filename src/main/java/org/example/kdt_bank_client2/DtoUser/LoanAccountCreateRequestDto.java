@@ -17,14 +17,11 @@ import java.time.LocalDate;
 public class LoanAccountCreateRequestDto {
 
 
-    private Long customerId;
+    private String customerId; // 계좌번호
     private String productName;
-
     private BigDecimal totalAmount;
-
     private BigDecimal interestRate;
-
-    private LocalDate loanDate;
-
+    private LocalDate loanDate; //대출한 날짜
     private LocalDate maturityDate;
+    public LoanAccountCreateRequestDto() {};
 }

@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import org.example.kdt_bank_client2.UnifiedApplication;
 
 import java.io.IOException;
 
@@ -19,7 +20,8 @@ public class M_MainController {
     @FXML
     public void initialize() throws IOException {
         // 상단 바 로딩 후 붙이기
-        FXMLLoader topBarLoader = new FXMLLoader(getClass().getResource("mtop_bar.fxml"));
+        FXMLLoader topBarLoader = new FXMLLoader(getClass().getResource("/org/example/kdt_bank_client2/mtop_bar.fxml"));
+        topBarLoader.setControllerFactory(UnifiedApplication.springContext::getBean);
         Parent topBar = topBarLoader.load();
         topBarContainer.getChildren().add(topBar);
 
@@ -27,7 +29,7 @@ public class M_MainController {
         topBarController.setMainController(this);
 
         // 사이드바 로딩 후 붙이기(좌측 AnchorPane 내부)
-        FXMLLoader sidebarLoader = new FXMLLoader(getClass().getResource("sidebar.fxml"));
+        FXMLLoader sidebarLoader = new FXMLLoader(getClass().getResource("/org/example/kdt_bank_client2/sidebar.fxml"));
         Parent sidebar = sidebarLoader.load();
         sideBarContainer.getChildren().add(sidebar);
 
@@ -35,7 +37,8 @@ public class M_MainController {
         sidebarController.setMainController(this);
 
         // 초기 화면 로딩 후 스택페인에 붙이기
-        FXMLLoader mainViewLoader = new FXMLLoader(getClass().getResource("M_home.fxml"));
+        FXMLLoader mainViewLoader = new FXMLLoader(getClass().getResource("/org/example/kdt_bank_client2/M_home.fxml"));
+        mainViewLoader.setControllerFactory(UnifiedApplication.springContext::getBean);
         Parent mainView = mainViewLoader.load();
         stackPane.getChildren().setAll(mainView);
     }

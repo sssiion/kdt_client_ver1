@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TitledPane?>
+
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TextField?>
+<ScrollPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.kdt_bank_client2.UserBank.ManagerHomeController"
+            fitToWidth="true"
+            style="-fx-background-color: #FAFAFA;">
+
+    <VBox layoutX="250.0" prefWidth="850.0" spacing="20" style="-fx-padding: 20;">
+
+        <!-- 상단 빠른 메뉴 -->
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <Button fx:id="btnNewAccount" text="신규 계좌 / 상품 가입" prefWidth="180" prefHeight="100"
+                    style="-fx-background-color: #F5F5F5; -fx-text-fill: #333;
+                           -fx-font-size: 16; -fx-border-color: #DDD; -fx-border-radius: 8; -fx-background-radius: 8;"/>
+            <Button fx:id="btnCustomerInfo" text="고객 정보 변경" prefWidth="180" prefHeight="100"
+                    style="-fx-background-color: #F5F5F5; -fx-text-fill: #333;
+                           -fx-font-size: 16; -fx-border-color: #DDD; -fx-border-radius: 8; -fx-background-radius: 8;"/>
+            <Button fx:id="btnLoanRequest" text="대출 신청 및 심사" prefWidth="180" prefHeight="100"
+                    style="-fx-background-color: #F5F5F5; -fx-text-fill: #333;
+                           -fx-font-size: 16; -fx-border-color: #DDD; -fx-border-radius: 8; -fx-background-radius: 8;"/>
+            <Button fx:id="btnApproveLoan" text="대출 승인" prefWidth="180" prefHeight="100"
+                    style="-fx-background-color: #F5F5F5; -fx-text-fill: #333;
+                           -fx-font-size: 16; -fx-border-color: #DDD; -fx-border-radius: 8; -fx-background-radius: 8;"
+                    visible="false"/>
+        </HBox>
+
+        <!-- 직원 정보 카드 -->
+        <HBox spacing="20" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-border-color: #EEE; -fx-border-width: 1;">
+            <ImageView fx:id="employeeImage" fitHeight="100" fitWidth="100"
+                       style="-fx-background-radius: 50; -fx-border-radius: 50;"/>
+            <VBox alignment="CENTER_LEFT" spacing="5">
+                <Label fx:id="lblEmployeeName" text="김도윤 사원" style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+                <Label fx:id="lblEmployeeDept" text="교통대학교점" style="-fx-font-size: 16; -fx-text-fill: #777;"/>
+                <HBox spacing="20">
+                    <VBox alignment="CENTER">
+                        <Label fx:id="lblScheduleCount" text="4" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+                        <Label text="오늘의 일정" style="-fx-text-fill: #555;"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+        </HBox>
+        <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-border-color: #EEE; -fx-border-width: 1;">
+            <Label text="고객 검색" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <VBox spacing="5">
+                    <Label text="고객명" style="-fx-text-fill: #555;"/>
+                    <TextField fx:id="txtCustomerName" promptText="고객명을 입력하세요" prefWidth="200"/>
+                </VBox>
+                <VBox spacing="5">
+                    <Label text="주민등록번호" style="-fx-text-fill: #555;"/>
+                    <TextField fx:id="txtCustomerSSN" promptText="주민등록번호를 입력하세요" prefWidth="200"/>
+                </VBox>
+                <Button fx:id="btnSearchCustomer" text="검색" prefWidth="100" prefHeight="35"
+                        style="-fx-background-color: #0d6da9; -fx-text-fill: white; -fx-font-size: 14; -fx-background-radius: 5;"/>
+            </HBox>
+
+            <HBox fx:id="customerInfoSection" spacing="20" visible="false"
+                  style="-fx-background-color: white; -fx-padding: 10; -fx-background-radius: 8; -fx-border-color: #EEE; -fx-border-width: 1;">
+                <VBox spacing="5">
+                    <Label text="이름:" style="-fx-font-weight: bold;"/>
+                    <Label fx:id="lblInfoName" text="—"/>
+                </VBox>
+                <VBox spacing="5">
+                    <Label text="주민등록번호:" style="-fx-font-weight: bold;"/>
+                    <Label fx:id="lblInfoSSN" text="—"/>
+                </VBox>
+                <VBox spacing="5">
+                    <Label text="전화번호:" style="-fx-font-weight: bold;"/>
+                    <Label fx:id="lblInfoPhone" text="—"/>
+                </VBox>
+                <VBox spacing="5">
+                    <Label text="이메일:" style="-fx-font-weight: bold;"/>
+                    <Label fx:id="lblInfoEmail" text="—"/>
+                </VBox>
+                <VBox spacing="5">
+                    <Label text="주소:" style="-fx-font-weight: bold;"/>
+                    <Label fx:id="lblInfoAddress" text="—"/>
+                </VBox>
+            </HBox>
+        </VBox>
+        <!-- 계좌 정보 테이블 -->
+        <VBox fx:id="accountInfoSection" spacing="10" visible="false">
+            <Label text="보유 계좌" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+            <TableView fx:id="accountInfoTable" prefHeight="200">
+                <columns>
+                    <TableColumn fx:id="colAccountNumber" text="계좌번호" prefWidth="120"/>
+                    <TableColumn fx:id="colAccountType"   text="계좌종류" prefWidth="100"/>
+                    <TableColumn fx:id="colBalance"       text="잔액" prefWidth="100"/>
+                    <TableColumn fx:id="colOpenDate"      text="개설일" prefWidth="100"/>
+                    <TableColumn fx:id="colClosingDate"   text="해지일" prefWidth="100"/>
+                    <TableColumn fx:id="colStatus"        text="상태" prefWidth="80"/>
+                    <TableColumn fx:id="colProductType" text="상품유형" prefWidth="100"/>
+                </columns>
+            </TableView>
+        </VBox>
+
+    </VBox>
+</ScrollPane>

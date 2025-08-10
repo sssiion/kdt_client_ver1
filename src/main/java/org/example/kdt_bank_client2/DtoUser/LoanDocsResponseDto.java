@@ -14,8 +14,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class LoanDocsResponseDto {
 
-    private Long docId;
-    private Long applicationId;
+    private String docId;
+    private String applicationId;
     private String filePath;
     private String fileName;
     private String fileType;

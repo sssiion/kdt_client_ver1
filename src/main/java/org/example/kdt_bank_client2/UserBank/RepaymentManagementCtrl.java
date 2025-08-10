@@ -1,130 +1,89 @@
 package org.example.kdt_bank_client2.UserBank;
 
-import org.example.kdt_bank_client2.UserBank.model.CustomerInfo;
-import org.example.kdt_bank_client2.UserBank.SessionUser.CustomerSession;
+
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.fxml.FXML;
 
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
+import org.example.kdt_bank_client2.UserBank.SessionUser.CustomerSession;
+import org.example.kdt_bank_client2.DtoUser.CustomerResponseDto;
+import org.example.kdt_bank_client2.DtoUser.LoanAccountResponseDto;
+import org.example.kdt_bank_client2.UserBank.ServiceUser.LoanAccountService;
+import org.springframework.stereotype.Controller;
+import java.math.BigDecimal;
 
+
+@Controller
+@RequiredArgsConstructor
 public class RepaymentManagementCtrl {
 
     @FXML private Label lblName, lblPhone, lblResident, lblEmail, lblAddress;
     @FXML private VBox loanAccountsVBox;
 
-    private final List<LoanAccount> loanAccounts = new ArrayList<>();
-    private LoanAccount selectedAccount;
+    private final CustomerSession customerSession;
+    private final LoanAccountService loanAccountService;
 
     @FXML
     public void initialize() {
-        CustomerInfo cust = CustomerSession.getCurrentCustomer();
+        CustomerResponseDto cust = customerSession.getCustomerResponseDto();
         if (cust == null) {
             new Alert(Alert.AlertType.WARNING, "먼저 고객을 검색하세요.").showAndWait();
             loanAccountsVBox.setDisable(true);
             return;
         }
 
-
-        lblName    .setText(cust.getName());
-        lblPhone   .setText(cust.getPhone());
+        lblName.setText(cust.getName());
+        lblPhone.setText(cust.getPhone());
         lblResident.setText(cust.getResidentNumber());
-        lblEmail   .setText(cust.getEmail());
-        lblAddress .setText(cust.getAddress());
+        lblEmail.setText(cust.getEmail());
+        lblAddress.setText(cust.getAddress());
 
-        // 2) 고객 대출 계좌 DB에서 로드 및 표시
         loadAndShowLoanAccounts(cust.getId());
     }
 
-    private void loadAndShowLoanAccounts(int customerId) {
-        if (CustomerSession.getCurrentCustomer() == null) {
-            new Alert(Alert.AlertType.WARNING, "고객 정보가 없습니다.").showAndWait();
-            return;
-        }
-        loanAccounts.clear();
+    private void loadAndShowLoanAccounts(String customerId) {
         loanAccountsVBox.getChildren().clear();
-
-        String sql = "SELECT loan_id, total_amount, repayment_amount FROM loan_account WHERE customer_id = ?";
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setInt(1, customerId);
-            try (ResultSet rs = ps.executeQuery()) {
-                while (rs.next()) {
-                    LoanAccount acc = new LoanAccount(
-                            rs.getString("loan_id"),
-                            rs.getLong("total_amount"),
-                            rs.getLong("repayment_amount")
-                    );
-                    loanAccounts.add(acc);
-                    loanAccountsVBox.getChildren().add(createLoanAccountItem(acc));
-                }
+        try {
+            List<LoanAccountResponseDto> accounts = loanAccountService.getLoanAccountsByCustomerId(customerId);
+            for (LoanAccountResponseDto acc : accounts) {
+                loanAccountsVBox.getChildren().add(createLoanAccountItem(acc));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            showAlert("DB 오류", "대출 계좌 조회 중 오류 발생");
+        } catch (Exception e) {
+            showAlert("오류", "대출 계좌 조회 실패: " + e.getMessage());
         }
     }
 
-    private TitledPane createLoanAccountItem(LoanAccount acc) {
+    private TitledPane createLoanAccountItem(LoanAccountResponseDto acc) {
         VBox box = new VBox(6);
-        Label lblId    = new Label("계좌번호: " + acc.loanId);
-        Label lblTotal = new Label("대출금액: " + String.format("%,d원", acc.totalLoan));
-        TextField tfRep = new TextField(String.valueOf(acc.repayment));
-        tfRep.setPrefWidth(120);
+        Label lblId = new Label("대출ID: " + acc.getLoanId());
+        Label lblTotal = new Label("대출금액: " + acc.getTotalAmount() + "원");
+        TextField tfRep = new TextField(acc.getRepaymentAmount() != null ? acc.getRepaymentAmount().toString() : "0");
+
+        Button btnSave = new Button("상환 저장");
         Label lblRemain = new Label();
 
-        tfRep.textProperty().addListener((o, oldV, newV) -> {
+        btnSave.setOnAction(e -> {
             try {
-                acc.repayment = Long.parseLong(newV.replaceAll(",", ""));
-            } catch (NumberFormatException ex) {
-                tfRep.setText(oldV);
+                LoanAccountResponseDto updated = loanAccountService.makeRepayment(
+                        acc.getLoanId(),
+                        new BigDecimal(tfRep.getText())
+                );
+                lblRemain.setText("잔액: " +
+                        updated.getTotalAmount().subtract(updated.getRepaymentAmount()) + "원");
+                showAlert("완료", "상환 처리 성공");
+            } catch (Exception ex) {
+                showAlert("에러", ex.getMessage());
             }
         });
 
-        Button btnSave = new Button("저장");
-        btnSave.setOnAction(e -> {
-            saveRepayment(acc);
-            long remain = acc.totalLoan - acc.repayment;
-            lblRemain.setText("상환 후 잔액: " + String.format("%,d원", remain));
-        });
-
-        box.getChildren().addAll(lblId, lblTotal, new Label("상환액:"), tfRep, btnSave, lblRemain);
-        TitledPane pane = new TitledPane(acc.loanId, box);
-        pane.setExpanded(false);
-        return pane;
-    }
-
-    private void saveRepayment(LoanAccount acc) {
-        String sql = "UPDATE loan_account SET repayment_amount = ? WHERE loan_id = ?";
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setLong(1, acc.repayment);
-            ps.setString(2, acc.loanId);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            showAlert("DB 오류", "상환 정보 저장 중 오류 발생");
-        }
+        box.getChildren().addAll(lblId, lblTotal, new Label("상환액 입력:"), tfRep, btnSave, lblRemain);
+        return new TitledPane(acc.getLoanId(), box);
     }
 
     private void showAlert(String title, String msg) {
-        Alert a = new Alert(Alert.AlertType.INFORMATION);
-        a.setTitle(title);
-        a.setHeaderText(null);
-        a.setContentText(msg);
-        a.showAndWait();
-    }
-
-    private static class LoanAccount {
-        final String loanId;
-        final long totalLoan;
-        long repayment;
-        LoanAccount(String loanId, long totalLoan, long repayment) {
-            this.loanId = loanId;
-            this.totalLoan = totalLoan;
-            this.repayment = repayment;
-        }
+        new Alert(Alert.AlertType.INFORMATION, msg, ButtonType.OK).showAndWait();
     }
 }
+

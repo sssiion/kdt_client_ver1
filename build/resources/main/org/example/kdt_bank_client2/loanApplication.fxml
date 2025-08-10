@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.kdt_bank_client2.UserBank.LoanApplicationCtrl"
+      spacing="20">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- 고객 정보 -->
+    <TitledPane text="고객 정보" expanded="true">
+        <content>
+            <GridPane hgap="10" vgap="8">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="15"/>
+                    <ColumnConstraints percentWidth="35"/>
+                    <ColumnConstraints percentWidth="15"/>
+                    <ColumnConstraints percentWidth="35"/>
+                </columnConstraints>
+
+                <Label text="이름:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Label fx:id="nameLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="주민번호:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                <Label fx:id="residentLabel" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                <Label text="전화번호:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label fx:id="phoneLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="이메일:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                <Label fx:id="emailLabel" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+                <Label text="주소:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label fx:id="addressLabel" GridPane.rowIndex="2" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
+            </GridPane>
+        </content>
+    </TitledPane>
+
+    <!-- 보유 계좌 -->
+    <TitledPane text="보유 계좌" expanded="true">
+        <content>
+            <TableView fx:id="accountTable" prefHeight="150">
+                <columns>
+                    <TableColumn fx:id="colAccNo" text="계좌번호" prefWidth="80"/>
+                    <TableColumn fx:id="colAccType" text="계좌종류" prefWidth="120"/>
+                    <TableColumn fx:id="colBalance" text="잔액" prefWidth="100"/>
+                    <TableColumn fx:id="colOpenDate" text="개설일" prefWidth="100"/>
+                    <TableColumn fx:id="colCloseDate" text="해지일" prefWidth="100"/>
+                    <TableColumn fx:id="colStatus" text="상태" prefWidth="80"/>
+                    <TableColumn fx:id="colProdType" text="상품유형" prefWidth="100"/>
+                </columns>
+            </TableView>
+        </content>
+    </TitledPane>
+
+    <!-- 대출 상품 -->
+    <TitledPane text="대출 상품" expanded="true">
+        <content>
+            <VBox spacing="10">
+                <TableView fx:id="productTable" prefHeight="150">
+                    <columns>
+                        <TableColumn fx:id="colLoanName" text="상품명" prefWidth="200"/>
+                        <TableColumn fx:id="colLoanDetail" text="상세" prefWidth="300"/>
+                        <TableColumn fx:id="colLoanLimit" text="최대 한도" prefWidth="120"/>
+                    </columns>
+                </TableView>
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button fx:id="btnUpload" text="서류 첨부" disable="true"/>
+                    <Button fx:id="btnApply"  text="대출 신청" disable="true"/>
+                </HBox>
+            </VBox>
+        </content>
+    </TitledPane>
+</VBox>
