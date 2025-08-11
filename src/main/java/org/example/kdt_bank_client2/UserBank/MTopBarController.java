@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.example.kdt_bank_client2.Session.UserSession;
+import org.example.kdt_bank_client2.UnifiedApplication;
 import org.example.kdt_bank_client2.UserBank.SessionUser.CustomerSession;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,7 +34,11 @@ public class MTopBarController {
     @FXML
     private void NuriBankButton() {
         try {
-            Parent homeScene = FXMLLoader.load(getClass().getResource("M_home.fxml"));
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/org/example/kdt_bank_client2/M_home.fxml")
+            );
+            loader.setControllerFactory(UnifiedApplication.springContext::getBean);
+            Parent homeScene = loader.load();
             mainController.showScreen(homeScene);
         } catch (IOException e) {
             e.printStackTrace();
@@ -47,7 +52,9 @@ public class MTopBarController {
         Stage stage = (Stage) rootHBox.getScene().getWindow();
         stage.close();
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("M_signin_Form.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/kdt_bank_client2/M_signin_From.fxml"));
+            loader.setControllerFactory(UnifiedApplication.springContext::getBean);
+            Parent root = loader.load();
             Stage loginStage = new Stage();
             loginStage.setTitle("로그인");
             loginStage.setScene(new Scene(root));

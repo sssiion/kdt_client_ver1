@@ -6,7 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
+import lombok.RequiredArgsConstructor;
+import org.example.kdt_bank_client2.UnifiedApplication;
+import org.springframework.stereotype.Controller;
 
+@Controller
+@RequiredArgsConstructor
 public class SidebarController {
 
     @FXML private Button menu1Header, menu2Header, menu3Header, menu4Header, menu5Header;
@@ -24,6 +29,7 @@ public class SidebarController {
     public void loaderController(String path) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+            loader.setControllerFactory(UnifiedApplication.springContext::getBean);
             Parent content = loader.load();
             if (mainController != null) {
                 mainController.showScreen(content);
@@ -35,44 +41,40 @@ public class SidebarController {
 
 
 
-    @FXML
-    private void newCustomerRegistration(ActionEvent event) {
-        loaderController("newCustomerRegistration.fxml");
-    }
 
 
     @FXML
     private void customerAdd(ActionEvent event) {
-        loaderController("M_NewMember.fxml");
+        loaderController("/org/example/kdt_bank_client2/M_NewMember.fxml");
     }
     @FXML
     private void customerSearch(ActionEvent event) {
-        loaderController("M_MemberInquiry.fxml");
+        loaderController("/org/example/kdt_bank_client2/M_MemberInquiry.fxml");
     }
 
     @FXML
     private void customerInfoChange(ActionEvent event) {
-        loaderController("M_MemberChange.fxml");
+        loaderController("/org/example/kdt_bank_client2/M_MemberChange.fxml");
     }
 
     @FXML
     private void newAccountRegistration(ActionEvent event) {
-        loaderController("newAccountRegistration.fxml");
+        loaderController("/org/example/kdt_bank_client2/newAccountRegistration.fxml");
     }
 
     @FXML
     private void productTermination(ActionEvent event) {
-        loaderController("productTermination.fxml");
+        loaderController("/org/example/kdt_bank_client2/productTermination.fxml");
     }
 
     @FXML
     private void cashDeposit(ActionEvent event) {
-        loaderController("M_Cashinandout.fxml");
+        loaderController("/org/example/kdt_bank_client2/M_Cashinandout.fxml");
     }
 
     @FXML
     private void accountTransfer(ActionEvent event) {
-        loaderController("M_AccountTransfer.fxml");
+        loaderController("/org/example/kdt_bank_client2/M_AccountTransfer.fxml");
     }
 
 //    @FXML
@@ -82,27 +84,27 @@ public class SidebarController {
 
     @FXML
     private void loanApplication(ActionEvent event) {
-        loaderController("loanApplication.fxml");
+        loaderController("/org/example/kdt_bank_client2/loanApplication.fxml");
     }
 
     @FXML
     private void contractChange(ActionEvent event) {
-        loaderController("contractChange.fxml");
+        loaderController("/org/example/kdt_bank_client2/contractChange.fxml");
     }
 
     @FXML
     private void repaymentManagement(ActionEvent event) {
-        loaderController("repaymentManagement.fxml");
+        loaderController("/org/example/kdt_bank_client2/repaymentManagement.fxml");
     }
 
 
     @FXML
     private void contractManagement(ActionEvent event) {
-        loaderController("M_Agreement.fxml");
+        loaderController("/org/example/kdt_bank_client2/M_Agreement.fxml");
     }
 
     @FXML
-    private void maturityProductCheck(ActionEvent event) { loaderController("M_Expiration.fxml");}
+    private void maturityProductCheck(ActionEvent event) { loaderController("/org/example/kdt_bank_client2/M_Expiration.fxml");}
 
     // 메뉴 접고 펼침 관리 (변경 없음)
     private void toggleMenuVisibility(VBox menuContent, Button headerButton) {

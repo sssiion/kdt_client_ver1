@@ -6,10 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import lombok.RequiredArgsConstructor;
 import org.example.kdt_bank_client2.UnifiedApplication;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-
+@Component
 public class M_MainController {
     @FXML private VBox topBarContainer;
     @FXML private AnchorPane sideBarContainer;
@@ -19,6 +21,7 @@ public class M_MainController {
 
     @FXML
     public void initialize() throws IOException {
+
         // 상단 바 로딩 후 붙이기
         FXMLLoader topBarLoader = new FXMLLoader(getClass().getResource("/org/example/kdt_bank_client2/mtop_bar.fxml"));
         topBarLoader.setControllerFactory(UnifiedApplication.springContext::getBean);
@@ -30,6 +33,7 @@ public class M_MainController {
 
         // 사이드바 로딩 후 붙이기(좌측 AnchorPane 내부)
         FXMLLoader sidebarLoader = new FXMLLoader(getClass().getResource("/org/example/kdt_bank_client2/sidebar.fxml"));
+        //sidebarLoader.setControllerFactory(UnifiedApplication.springContext::getBean);
         Parent sidebar = sidebarLoader.load();
         sideBarContainer.getChildren().add(sidebar);
 

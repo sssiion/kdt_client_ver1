@@ -25,7 +25,14 @@ public class UserService {
         List<String> A = userController.AuthList();
         return A;
     }
+    public UserDataDto userStatus(String userId){
+        try{
+            return userController.userStatus(userId);
 
+        }catch(Exception e){
+            e.printStackTrace();
+        }return null;
+    }
     public void login(String userId, String password, Consumer<UserResponseDto> onSuccess, Consumer<String> onError) {
         if (userId == null || userId.trim().isEmpty() || password == null || password.trim().isEmpty()) {
             onError.accept("사용자 ID와 비밀번호를 입력해주세요.");

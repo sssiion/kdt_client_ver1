@@ -99,7 +99,6 @@
                     <TableColumn fx:id="colBalance"       text="잔액" prefWidth="100"/>
                     <TableColumn fx:id="colOpenDate"      text="개설일" prefWidth="100"/>
                     <TableColumn fx:id="colClosingDate"   text="해지일" prefWidth="100"/>
-                    <TableColumn fx:id="colStatus"        text="상태" prefWidth="80"/>
                     <TableColumn fx:id="colProductType" text="상품유형" prefWidth="100"/>
                 </columns>
             </TableView>

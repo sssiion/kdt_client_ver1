@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import lombok.RequiredArgsConstructor;
 import org.example.kdt_bank_client2.Service.UserService;
+import org.example.kdt_bank_client2.UnifiedApplication;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
@@ -37,6 +38,7 @@ public class SignInController {
         userService.login(email, pw,
                 user -> Platform.runLater(() -> {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bank2/m_main_view.fxml"));
+                    loader.setControllerFactory(UnifiedApplication.springContext::getBean);
                     Parent mainRoot = null;
                     try {
                         mainRoot=loader.load();

@@ -15,6 +15,14 @@ public class UserController {
     private final UserSession userSession;
     private final ApiClient apiClient;
 
+    public UserDataDto userStatus(String userId) throws Exception {
+        ApiResponse<UserDataDto> response = apiClient.get("/api/users/status/"+userId, new TypeReference<ApiResponse<UserDataDto>>() {});
+        if(response == null){
+            System.out.println("출력안됨");
+        }
+        return response.getData();
+    }
+
     public boolean register(String userName, String userPhone) {
         try {
             UserRegisterDto dto = new UserRegisterDto(userName, userPhone);

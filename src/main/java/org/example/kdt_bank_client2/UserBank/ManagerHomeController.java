@@ -2,20 +2,27 @@ package org.example.kdt_bank_client2.UserBank;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import lombok.RequiredArgsConstructor;
 import org.example.kdt_bank_client2.DTO.UserDataDto;
 import org.example.kdt_bank_client2.DtoUser.AccountResponseDto;
 import org.example.kdt_bank_client2.DtoUser.CustomerResponseDto;
 import org.example.kdt_bank_client2.DTO.UserResponseDto;
+import org.example.kdt_bank_client2.Service.UserService;
+import org.example.kdt_bank_client2.UnifiedApplication;
 import org.example.kdt_bank_client2.UserBank.ServiceUser.CustomerService;
 import org.example.kdt_bank_client2.UserBank.SessionUser.CustomerSession;
 import org.example.kdt_bank_client2.Session.UserSession;
 import org.springframework.stereotype.Controller;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -40,6 +47,7 @@ public class ManagerHomeController {
     private final CustomerService customerService;
     private final CustomerSession customerSession;
     private final UserSession userSession;
+    private final UserService userService;
 
     @FXML
     public void initialize() {
@@ -48,9 +56,16 @@ public class ManagerHomeController {
 
         btnSearchCustomer.setOnAction(e -> searchCustomer());
 
+        if(userSession.getCurrentUserData()==null){
+            userSession.setCurrentUserData(userService.userStatus(userSession.getCurrentUser().getUserId()));
+        }
         UserDataDto emp = userSession.getCurrentUserData();
+        if(emp!=null){System.out.println(emp.getUserType().name());}
 
-        btnApproveLoan.setVisible(emp != null && "BT".equalsIgnoreCase(emp.getUserType().name()));
+        btnApproveLoan.setVisible("BM".equals(emp.getUserType().toString()));//"BM".equals(emp.getUserType().toString()));
+        if(btnApproveLoan.isVisible()){
+            btnApproveLoan.setOnAction(e->{handleApproveLoan();});
+        }
     }
 
     private void loadEmployeeInfo() {
@@ -97,5 +112,19 @@ public class ManagerHomeController {
         a.setTitle(title);
         a.setContentText(msg);
         a.showAndWait();
+    }
+    private void handleApproveLoan() {
+        try {
+            FXMLLoader loader =  new FXMLLoader(getClass().getResource("/org/example/kdt_bank_client2/LoanApproval.fxml"));
+            loader.setControllerFactory(UnifiedApplication.springContext::getBean);
+            Parent root =loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("대출 승인 관리");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("오류", "대출 승인 화면 로딩 실패");
+        }
     }
 }

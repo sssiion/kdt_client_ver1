@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.example.kdt_bank_client2.Service.UserService;
+import org.example.kdt_bank_client2.UnifiedApplication;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -38,6 +39,7 @@ public class SigninController2 {
                 user -> Platform.runLater(() -> {
                     System.out.println("시작");
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/kdt_bank_client2/m_main_view.fxml"));
+                    loader.setControllerFactory(UnifiedApplication.springContext::getBean);
                     if (loader == null) {
                         System.err.println("FXML 파일 위치를 찾을 수 없습니다.");
                     }else{
@@ -47,6 +49,7 @@ public class SigninController2 {
 
                     try {
                         mainRoot=loader.load();
+
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

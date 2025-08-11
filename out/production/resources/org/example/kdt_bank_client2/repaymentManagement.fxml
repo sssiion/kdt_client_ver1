@@ -2,7 +2,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/17.0.12"
+<AnchorPane
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.kdt_bank_client2.UserBank.RepaymentManagementCtrl"
             prefWidth="600" prefHeight="500">

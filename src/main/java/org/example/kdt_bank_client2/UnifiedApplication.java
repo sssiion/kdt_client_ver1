@@ -54,6 +54,7 @@ public class UnifiedApplication extends Application {
         initSpringContext();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/kdt_bank_client2/M_signin_From.fxml"));
+            loader.setControllerFactory(UnifiedApplication.springContext::getBean);
             loader.setControllerFactory(springContext::getBean);
             Scene scene = new Scene(loader.load(), 1100, 900);
             stage.setScene(scene);
