@@ -18,28 +18,28 @@ public class LoanApplicationService {
 
     // 대출 신청 생성
     public LoanApplicationResponseDto createLoanApplication(LoanApplicationCreateRequestDto dto) throws Exception {
-        return loanApplicationController.create(dto).getData();
+        return loanApplicationController.create(dto);
     }
 
     // 대출 신청 목록 (전체)
     public List<LoanApplicationResponseDto> getApplicationsByCustomerId(Long customerId) throws Exception {
-        return loanApplicationController.listByCustomerId(customerId).getData();
+        return loanApplicationController.listByCustomerId(customerId);
     }
 
     // 특정 신청 조회
     public LoanApplicationResponseDto getApplicationById(Long id) throws Exception {
-        return loanApplicationController.getById(id).getData();
+        return loanApplicationController.getById(id);
     }
 
     // 신청 취소
     public LoanApplicationResponseDto cancelApplication(Long id) throws Exception {
-        return loanApplicationController.cancel(id).getData();
+        return loanApplicationController.cancel(id);
     }
 
     // 현재 Pending 상태 신청 목록 조회
     public List<LoanApplicationResponseDto> getPendingApplications() throws Exception {
         // status = 'PENDING'인 것만 필터
-        List<LoanApplicationResponseDto> all = loanApplicationController.listByCustomerId(null).getData();
+        List<LoanApplicationResponseDto> all = loanApplicationController.listByCustomerId(null);
         return all.stream()
                 .filter(app -> "PENDING".equalsIgnoreCase(app.getStatus()))
                 .collect(Collectors.toList());

@@ -23,7 +23,7 @@ public class ProductResponseDto {
     private BigDecimal maxRate;
     private BigDecimal minRate;
     private BigDecimal limitMoney;
-    private String status;
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

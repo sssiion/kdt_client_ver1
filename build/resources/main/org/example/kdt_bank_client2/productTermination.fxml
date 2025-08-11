@@ -3,8 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.kdt_bank_client2.UserBank.ProductTerminationCtrl"
             prefWidth="600" prefHeight="400">
 
@@ -25,12 +24,13 @@
                 <TableColumn fx:id="colAccountNumber" text="계좌번호" prefWidth="180"/>
                 <TableColumn fx:id="colProductName"   text="상품명"   prefWidth="200"/>
                 <TableColumn fx:id="colStatus"        text="상태"     prefWidth="120"/>
+                <TableColumn fx:id="amount"           text="금액"     prefWidth="100"/>
             </columns>
         </TableView>
 
         <!-- 삭제 버튼 -->
         <HBox alignment="CENTER_RIGHT">
-            <Button text="계좌 삭제" fx:id="btnDeleteAccount" onAction="#onDeleteAccount"/>
+            <Button text="계좌 삭제" fx:id="btnDeleteAccount" onAction="#deleteSelected"/>
         </HBox>
     </VBox>
 </AnchorPane>

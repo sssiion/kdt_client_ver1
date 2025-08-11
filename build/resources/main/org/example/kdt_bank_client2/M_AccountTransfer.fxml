@@ -3,8 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+<BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.kdt_bank_client2.UserBank.AccountTransferController"
             prefWidth="900" prefHeight="600"
             style="-fx-background-color: #FAFAFA;">

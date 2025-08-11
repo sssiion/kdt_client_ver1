@@ -21,7 +21,7 @@ public class AgreementResponseDto { // 계약 응답
     private String productName; // 상품명
     private LocalDate agreementDate; //
     private LocalDate expirationDate;
-    private String note;
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

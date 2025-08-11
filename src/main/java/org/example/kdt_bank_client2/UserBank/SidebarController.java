@@ -7,6 +7,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.example.kdt_bank_client2.UnifiedApplication;
 import org.springframework.stereotype.Controller;
 
@@ -19,11 +20,8 @@ public class SidebarController {
     // mainContentContainer 제거 (메인 컨트롤러가 담당)
 
     // M_MainController 참조
+    @Setter
     private M_MainController mainController;
-
-    public void setMainController(M_MainController mainController) {
-        this.mainController = mainController;
-    }
 
     // 화면 전환 메서드 변경: M_MainController의 showScreen() 호출
     public void loaderController(String path) {
@@ -42,26 +40,28 @@ public class SidebarController {
 
 
 
-
+    // 신규 고객
     @FXML
     private void customerAdd(ActionEvent event) {
+
         loaderController("/org/example/kdt_bank_client2/M_NewMember.fxml");
     }
+    // 고객 검색 조회
     @FXML
     private void customerSearch(ActionEvent event) {
         loaderController("/org/example/kdt_bank_client2/M_MemberInquiry.fxml");
     }
-
+    //고객 정보 변경
     @FXML
     private void customerInfoChange(ActionEvent event) {
         loaderController("/org/example/kdt_bank_client2/M_MemberChange.fxml");
     }
-
+    //신규 계좌 상품 가입
     @FXML
     private void newAccountRegistration(ActionEvent event) {
         loaderController("/org/example/kdt_bank_client2/newAccountRegistration.fxml");
     }
-
+    //상품 해지
     @FXML
     private void productTermination(ActionEvent event) {
         loaderController("/org/example/kdt_bank_client2/productTermination.fxml");

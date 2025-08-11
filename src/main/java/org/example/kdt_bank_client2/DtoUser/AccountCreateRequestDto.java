@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 // 계좌 생성 요청 DTO
 @Data
@@ -18,10 +17,15 @@ public class AccountCreateRequestDto {
 
     private String customerId;
     private String productName;
-    private BigDecimal amount;
-    private LocalDate openingDate;
-    private LocalDate closingDate;
-
+    private BigDecimal amount = BigDecimal.valueOf(0);
     private String productType;
-    public AccountCreateRequestDto(){};
+    public AccountCreateRequestDto(String customerId, String productName,String productType){
+        this.customerId=customerId;
+        this.productName=productName;
+        this.productType=productType;
+
+    }
+
+
+
 }

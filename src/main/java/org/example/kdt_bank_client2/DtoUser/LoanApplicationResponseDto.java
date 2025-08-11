@@ -16,16 +16,14 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class LoanApplicationResponseDto {
 
-    private String applicationId;
+    private Long applicationId;
     private String customerId;
-    private String customerName;
     private String productName;
     private BigDecimal requestedAmount;
-    private String status;
     private LocalDateTime applicationDate;
     private LocalDateTime approvalDate;
+    private String status;
     private String approvedBy;
-    private String approverName;
     private String rejectionReason;
     private String targetAccountNumber;
 

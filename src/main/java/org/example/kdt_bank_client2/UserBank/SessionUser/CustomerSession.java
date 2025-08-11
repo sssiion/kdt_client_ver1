@@ -4,6 +4,7 @@ package org.example.kdt_bank_client2.UserBank.SessionUser;
 import lombok.Getter;
 import lombok.Setter;
 import org.example.kdt_bank_client2.DtoUser.AccountResponseDto;
+import org.example.kdt_bank_client2.DtoUser.CashTransactionResponseDto;
 import org.example.kdt_bank_client2.DtoUser.CustomerResponseDto;
 import org.example.kdt_bank_client2.DtoUser.LoanAccountResponseDto;
 import org.springframework.stereotype.Component;
@@ -21,6 +22,7 @@ public class CustomerSession {
     public AccountResponseDto otheracountResponseDto;
     public List<LoanAccountResponseDto>  loanAccountResponseDtos;
     public LoanAccountResponseDto loanAccountResponseDto;
+    public CashTransactionResponseDto  cashTransactionResponseDto;
 
     public void incustomer(CustomerResponseDto dto){
         this.customerResponseDto=dto;

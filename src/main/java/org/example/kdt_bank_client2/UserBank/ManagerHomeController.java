@@ -80,7 +80,7 @@ public class ManagerHomeController {
         colAccountNumber.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getAccountNumber()));
         colAccountType.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getProductName()));
         colBalance.setCellValueFactory(data -> new javafx.beans.property.SimpleDoubleProperty(data.getValue().getAmount().doubleValue()));
-        colProductType.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getType()));
+        colProductType.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getProductType()));
     }
 
     private void searchCustomer() {
@@ -88,7 +88,7 @@ public class ManagerHomeController {
             customerService.getCustomerByNameAndResidentNumber(txtCustomerName.getText(), txtCustomerSSN.getText());
             displayCustomer(customerSession.getCustomerResponseDto());
         } catch (Exception e) {
-            showAlert("조회 실패", e.getMessage());
+            //showAlert("조회 실패", e.getMessage());
         }
     }
 

@@ -43,7 +43,7 @@ public class MemberChangeController {
     private void onUpdate() {
         try {
             String id =customerSession.getCustomer().getId();
-            customerService.updateCustomer(id,new CustomerUpdateRequestDto(txtName.getText(),txtPhone.getText(), txtPassword.getText(), txtAddress.getText(), txtEmail.getText()));
+            customerService.updateCustomer(id,new CustomerUpdateRequestDto(txtName.getText(),txtPhone.getText(), txtAddress.getText()));
             showAlert("성공", "수정 완료");
         } catch (Exception e) {
             showAlert("오류", e.getMessage());

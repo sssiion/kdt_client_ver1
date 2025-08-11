@@ -31,6 +31,7 @@ public class CashinandoutController {
     private final CustomerService customerService;
     private final ObservableList<AccountResponseDto> accountList = FXCollections.observableArrayList();
 
+
     @FXML
     public void initialize() {
         CustomerResponseDto dto = customerSession.getCustomerResponseDto();
@@ -42,6 +43,17 @@ public class CashinandoutController {
         loadCustomerAccounts(dto.getId());
         lstAccounts.setItems(accountList);
         lstAccounts.setOnMouseClicked(this::onAccountSelected);
+        lstAccounts.setCellFactory(param -> new ListCell<>() {
+            @Override
+            protected void updateItem(AccountResponseDto item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(item.getAccountNumber()); // 계좌번호만 표시
+                }
+            }
+        });
 
         btnDeposit.setOnAction(e -> handleTransaction("입금"));
         btnWithdraw.setOnAction(e -> handleTransaction("출금"));
@@ -85,24 +97,26 @@ public class CashinandoutController {
             showAlert(Alert.AlertType.WARNING, "입력 오류", "유효한 숫자만 입력 가능합니다.");
             return;
         }
+
         TransferRequestDto dto = new TransferRequestDto();
-        dto.setAmount(amount);
+        dto.setAmount(amtStr);
         CashTransactionResponseDto result;
-        if ("입금".equals(type)) {
+        if (type.equals("입금")) {
             dto.setToAccountNumber(accStr);
-            result = customerService.deposit(dto);
-        } else if ("출금".equals(type)) {
+            customerService.deposit(dto);
+        } else if (type.equals("출금")) {
             dto.setFromAccountNumber(accStr);
-            result = customerService.withdraw(dto);
+           customerService.withdraw(dto);
         } else {
             showAlert(Alert.AlertType.WARNING, "타입 오류", "입금 또는 출금만 가능합니다.");
             return;
         }
+        result = customerSession.getCashTransactionResponseDto();
         if (result != null) {
             showAlert(Alert.AlertType.INFORMATION, "거래 완료",
                     String.format("%s %,.0f원\n새 잔액: %,.0f원", type, amount, result.getAmount()));
             txtAmount.clear();
-            loadCustomerAccounts(customerSession.getCustomerResponseDto().getId()); // 잔액 갱신
+            loadCustomerAccounts(customerSession.getCustomerResponseDto().getId()); // 잔액 갱신 >> 입출금 금액
         } else {
             showAlert(Alert.AlertType.ERROR, "실패", "거래 실패");
         }

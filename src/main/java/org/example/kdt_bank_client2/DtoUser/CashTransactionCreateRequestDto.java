@@ -18,6 +18,7 @@ public class CashTransactionCreateRequestDto {
 
     //@NotNull(message = "계좌번호는 필수입니다")
     private String accountNumber;
+    private String otherAccountNumber; // 상대방 계좌번호
 
     //@NotNull(message = "거래 유형은 필수입니다")
     private String transactionType;

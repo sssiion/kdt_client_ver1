@@ -1,8 +1,10 @@
 package org.example.kdt_bank_client2.UserBank;
 
+import javafx.scene.control.Button;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.example.kdt_bank_client2.ChatClientApp;
 import org.example.kdt_bank_client2.Session.UserSession;
 import org.example.kdt_bank_client2.UnifiedApplication;
 import org.example.kdt_bank_client2.UserBank.SessionUser.CustomerSession;
@@ -29,7 +31,17 @@ public class MTopBarController {
         this.mainController = mainController;
     }
 
+    @FXML
+    private Button btnAlarm;
+    @FXML
+    private void handleAlarmClick() {
+        // 현재 Stage 가져오기
+        Stage stage = (Stage) btnAlarm.getScene().getWindow();
 
+        // 채팅 시스템 실행
+        UnifiedApplication app = new UnifiedApplication();
+        app.openCustomerSystem(stage);
+    }
 
     @FXML
     private void NuriBankButton() {

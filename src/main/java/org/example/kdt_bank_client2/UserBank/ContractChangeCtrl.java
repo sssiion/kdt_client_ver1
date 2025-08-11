@@ -89,7 +89,7 @@ public class ContractChangeCtrl {
         newInterestRateField.setText(dto.getInterestRate() != null ? dto.getInterestRate().toString() : "");
         disableChangeFields(false);
     }
-
+    @FXML
     private void onSaveChange() {
         if (selectedLoanAccount == null) {
             showAlert("오류", "변경할 계약을 선택하세요.");

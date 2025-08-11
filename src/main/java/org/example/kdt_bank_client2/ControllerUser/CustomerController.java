@@ -35,7 +35,7 @@ public class CustomerController {
     //이름, 주민번호로 고객 조회.
     public CustomerResponseDto getCustomerByNameAndResidentNumber(String name, String number) throws Exception {
         // POST 요청을 통해 /api/customers 엔드포인트로 requestDto를 전송합니다.
-        ApiResponseUser<CustomerResponseDto> dto=apiClient.get("/api/customers/"+name+"/"+number, new TypeReference<ApiResponseUser<CustomerResponseDto>>() {});
+        ApiResponseUser<CustomerResponseDto> dto =apiClient.get("/api/customers/"+name+"/"+number, new TypeReference<ApiResponseUser<CustomerResponseDto>>() {});
         return dto.getData();
 
     }

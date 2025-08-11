@@ -48,6 +48,17 @@ public class AccountTransferController {
         loadCustomerAccounts(dto.getId());
         lstAccounts.setItems(accountList);
         lstAccounts.setOnMouseClicked(this::onAccountSelected);
+        lstAccounts.setCellFactory(param -> new ListCell<>() {
+            @Override
+            protected void updateItem(AccountResponseDto item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(item.getAccountNumber()); // 계좌번호만 표시
+                }
+            }
+        });
 
         btnTransfer.setOnAction(e -> onTransfer());
         btnCancel.setOnAction(e -> onCancel());
@@ -80,19 +91,9 @@ public class AccountTransferController {
             showAlert(Alert.AlertType.WARNING, "입력 오류", "모든 필드를 입력하세요.");
             return;
         }
-        BigDecimal amount;
-        try {
-            amount = new BigDecimal(amountStr);
-            if (amount.compareTo(BigDecimal.ZERO) <= 0) {
-                showAlert(Alert.AlertType.WARNING, "입력 오류", "금액은 0보다 커야 합니다.");
-                return;
-            }
-        } catch (NumberFormatException ex) {
-            showAlert(Alert.AlertType.WARNING, "입력 오류", "유효한 숫자만 입력 가능합니다.");
-            return;
-        }
+
         TransferRequestDto remittanceDto = new TransferRequestDto();
-        remittanceDto.setAmount(amount);
+        remittanceDto.setAmount(amountStr);
         remittanceDto.setFromAccountNumber(srcAccStr);
         remittanceDto.setToAccountNumber(dstAccStr);
         // NOTE: 비고는 필요시 req.setNote(note) 처럼 구현 가능

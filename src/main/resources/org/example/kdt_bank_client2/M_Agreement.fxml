@@ -57,7 +57,7 @@
 
         <Label text="금리 조정 가능:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
         <CheckBox fx:id="interestAdjustableCheckBox" disable="true"
-                  onAction="#onInterestAdjustableChanged"
+
                   GridPane.rowIndex="0" GridPane.columnIndex="3"/>
 
         <Label text="새 금리:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>

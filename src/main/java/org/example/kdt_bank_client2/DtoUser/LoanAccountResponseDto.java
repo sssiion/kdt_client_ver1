@@ -22,7 +22,7 @@ public class LoanAccountResponseDto {
     private String productName;
     private BigDecimal totalAmount;
     private BigDecimal repaymentAmount;
-    private BigDecimal remainingBalance;
+
     private BigDecimal interestRate;
     private LocalDate loanDate;
     private LocalDate maturityDate;

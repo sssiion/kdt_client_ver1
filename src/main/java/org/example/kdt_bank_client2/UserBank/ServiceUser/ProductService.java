@@ -23,4 +23,13 @@ public class ProductService {
             e.printStackTrace();
         }
     }
+    public void getProductsByCategory(String category)  {
+        try{
+            List<ProductResponseDto> dtos = productController.getProductsByCategory(category).getData();
+            productSession.setProductResponseDtos(dtos);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
 }

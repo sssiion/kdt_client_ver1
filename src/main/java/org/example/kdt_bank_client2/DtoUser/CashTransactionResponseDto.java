@@ -15,12 +15,13 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 public class CashTransactionResponseDto {
-    public CashTransactionResponseDto(){};
-    
+
+    private Long transactionId; //거래 id
     private String accountNumber; // 계좌 번호
     private String otherAccountNumber; // 상대 계좌 번호
-    private String transactionType; // 입출금 타입
     private BigDecimal amount; // 입출금 금액
+    private String transactionType; // 입출금 타입
+    private LocalDateTime transactionDate; // 입출금 기록 날짜
 
 
 }

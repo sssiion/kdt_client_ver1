@@ -24,6 +24,8 @@ javafx {
 }
 
 dependencies {
+    implementation("org.openjfx:javafx-controls:21.0.8")
+    implementation("org.openjfx:javafx-fxml:21.0.8")
     // 기존 Spring Boot 의존성들
     /* ---------- Spring ---------- */
     implementation("org.springframework.boot:spring-boot-starter") {

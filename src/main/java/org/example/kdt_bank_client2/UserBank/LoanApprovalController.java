@@ -33,8 +33,7 @@ public class LoanApprovalController {
 
     @FXML
     public void initialize() {
-        colAppId.setCellValueFactory(d -> new SimpleStringProperty(d.getValue().getApplicationId()));
-        colCustomerName.setCellValueFactory(d -> new SimpleStringProperty(d.getValue().getCustomerName()));
+        colAppId.setCellValueFactory(d -> new SimpleStringProperty(d.getValue().getApplicationId().toString()));
         colProductName.setCellValueFactory(d -> new SimpleStringProperty(d.getValue().getProductName()));
         colRequestedAmount.setCellValueFactory(d -> new SimpleStringProperty(
                 String.format("%,.0f", d.getValue().getRequestedAmount())
@@ -72,7 +71,7 @@ public class LoanApprovalController {
             return;
         }
         try {
-            loanApplicationService.updateStatus(selected.getApplicationId(), approve ? "APPROVED" : "REJECTED");
+            loanApplicationService.updateStatus(selected.getApplicationId().toString(), approve ? "APPROVED" : "REJECTED");
             new Alert(Alert.AlertType.INFORMATION, "처리 완료").showAndWait();
             loadPendingApplications();
         } catch (Exception e) {

@@ -101,39 +101,61 @@ public class CustomerService {
             System.err.println("❌고객 계좌조회 오류: " + e.getMessage());
 
         }
-    }
-    //입금
-    public CashTransactionResponseDto deposit(TransferRequestDto dto){
+    }// 계좌 생성
+    public AccountResponseDto createAccount(AccountCreateRequestDto dto){
         try{
-            CashTransactionResponseDto currentdto = accountController.deposit(dto);
+
+            return accountController.creatAccount(dto).getData();
+        }catch(Exception e){
+            e.printStackTrace();
+        }return null;
+    }
+
+    //입금
+    public void deposit(TransferRequestDto dto){
+        try{
+            String userId = customerSession.getCustomer().getId();
+            CashTransactionResponseDto currentdto = accountController.deposit(dto,userId);
+            customerSession.setCashTransactionResponseDto(currentdto);
             getAccountsByCustomerId(customerSession.getCustomer().getId());
-            return currentdto;
+
         }catch(Exception e){
             System.err.println("❌입금 실패: " + e.getMessage());
-        } return null;
+        }
     }
     //출금
-    public CashTransactionResponseDto withdraw(TransferRequestDto dto){
+    public void withdraw(TransferRequestDto dto){
         try{
-            CashTransactionResponseDto currentdto = accountController.withdraw(dto);
+            String userId = customerSession.getCustomer().getId();
+            CashTransactionResponseDto currentdto = accountController.withdraw(dto,userId);
+            customerSession.setCashTransactionResponseDto(currentdto);
             getAccountsByCustomerId(customerSession.getCustomer().getId());
-            return currentdto;
+
         }catch(Exception e){
             System.err.println("❌출금 실패: " + e.getMessage());
-        }return null;
+        }
     }
 
     //송금
-    public CashTransactionResponseDto remittance(TransferRequestDto dto){
+    public void remittance(TransferRequestDto dto){
         try{
-            CashTransactionResponseDto currentdto = accountController.remittance(dto);
+            String userId = customerSession.getCustomer().getId();
+            CashTransactionResponseDto currentdto = accountController.remittance(dto,userId);
+            customerSession.setCashTransactionResponseDto(currentdto);
             getAccountsByCustomerId(customerSession.getCustomer().getId());
-            return currentdto;
+
         }catch(Exception e){
             System.err.println("❌송금 실패: " + e.getMessage());
-        }return null;
+        }
     }
-
+    public void deleteAccount(String number){
+        try{
+            accountController.deleteAccount(number);
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println("계좌 삭제 실패"+e.getMessage());
+        }
+    }
 
 
 }

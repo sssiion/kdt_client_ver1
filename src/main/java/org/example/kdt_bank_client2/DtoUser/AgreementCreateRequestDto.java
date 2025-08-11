@@ -22,5 +22,4 @@ public class AgreementCreateRequestDto {
     private LocalDate agreementDate;
     private LocalDate expirationDate;
 
-    private String note;
 }

@@ -69,7 +69,7 @@ public class LoanApplicationCtrl {
         colAccNo.setCellValueFactory(d -> new SimpleStringProperty(d.getValue().getLoanId()));
         colAccType.setCellValueFactory(d -> new SimpleStringProperty(d.getValue().getProductName()));
         colBalance.setCellValueFactory(d -> new SimpleStringProperty(
-                String.format("%,.0f", d.getValue().getTotalAmount().min(d.getValue().getRepaymentAmount()))
+                String.format("%,.0f", d.getValue().getTotalAmount().subtract(d.getValue().getRepaymentAmount()))
         ));
         colOpenDate.setCellValueFactory(d -> new SimpleStringProperty(
                 d.getValue().getCreatedAt() != null ? d.getValue().getCreatedAt().toLocalDate().toString() : ""));

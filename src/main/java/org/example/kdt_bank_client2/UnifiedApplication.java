@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
@@ -19,7 +21,9 @@ import java.io.IOException;
 
 public class UnifiedApplication extends Application {
     public static ConfigurableApplicationContext springContext;
-
+    @Setter
+    @Getter
+    public Button customerButton;
     @Override
     public void start(Stage primaryStage) {
         // 초기 선택 화면
@@ -38,7 +42,7 @@ public class UnifiedApplication extends Application {
         employeeButton.setPrefSize(200, 50);
         employeeButton.setOnAction(e -> openEmployeeSystem(stage));
 
-        Button customerButton = new Button("채팅 시스템");
+        customerButton = new Button("채팅 시스템");
         customerButton.setPrefSize(200, 50);
         customerButton.setOnAction(e -> openCustomerSystem(stage));
 
@@ -58,13 +62,13 @@ public class UnifiedApplication extends Application {
             loader.setControllerFactory(springContext::getBean);
             Scene scene = new Scene(loader.load(), 1100, 900);
             stage.setScene(scene);
-            //stage.setTitle("직원 시스템");
+            stage.setTitle("직원 시스템");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void openCustomerSystem(Stage stage) {
+    public void openCustomerSystem(Stage stage) {
         // Spring Boot 기반 채팅 클라이언트 실행
         initSpringContext();
         springContext.publishEvent(new ChatClientApp.StageReadyEvent(stage));

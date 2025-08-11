@@ -33,7 +33,7 @@ public class M_MainController {
 
         // 사이드바 로딩 후 붙이기(좌측 AnchorPane 내부)
         FXMLLoader sidebarLoader = new FXMLLoader(getClass().getResource("/org/example/kdt_bank_client2/sidebar.fxml"));
-        //sidebarLoader.setControllerFactory(UnifiedApplication.springContext::getBean);
+        sidebarLoader.setControllerFactory(UnifiedApplication.springContext::getBean);
         Parent sidebar = sidebarLoader.load();
         sideBarContainer.getChildren().add(sidebar);
 

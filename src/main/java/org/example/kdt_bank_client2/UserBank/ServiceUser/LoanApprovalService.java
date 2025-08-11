@@ -17,7 +17,7 @@ public class LoanApprovalService {
     // 대출 승인 처리
     public void approveApplication(Long applicationId) throws Exception {
         // 승인 API가 별도 있다면 사용, 없으면 직접 데이터변경 및 계좌 입금 처리
-        LoanApplicationResponseDto app = loanApplicationController.getById(applicationId).getData();
+        LoanApplicationResponseDto app = loanApplicationController.getById(applicationId);
 
         // 예시: 계좌 입금 처리(LoanAccountController 등 사용)
         String targetAccountNumber = app.getTargetAccountNumber();

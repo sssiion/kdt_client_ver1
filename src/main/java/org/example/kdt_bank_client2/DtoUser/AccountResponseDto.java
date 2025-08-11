@@ -22,9 +22,7 @@ public class AccountResponseDto { //계정 응답
     private String customerId; // 사용자 id
     private String productName; // 상품명
     private BigDecimal amount; // 금액
-    private String type;
-    private LocalDate openingDate;
-    private LocalDate closingDate;
+    private String productType;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

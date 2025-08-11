@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx"
+<VBox
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="org.example.kdt_bank_client2.UserBank.LoanApplicationCtrl"
       spacing="20">

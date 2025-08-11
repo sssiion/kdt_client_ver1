@@ -27,7 +27,7 @@
     <Region HBox.hgrow="ALWAYS" />
 
     <!-- 우측 알림 아이콘 -->
-    <Button style="-fx-background-color: transparent;" />
+    <Button fx:id="btnAlarm" onAction="#handleAlarmClick" style="-fx-background-color: transparent;" />
 
 
     <ImageView  fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">

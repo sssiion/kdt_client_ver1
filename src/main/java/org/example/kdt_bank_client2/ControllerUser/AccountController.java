@@ -22,49 +22,52 @@ public class AccountController {
 
 
     // 계좌 생성
-    public ApiResponse<AccountResponseDto> creatAccount(AccountCreateRequestDto dto) throws Exception {
-        ApiResponse<AccountResponseDto> response = apiClient.post("/api/accounts", dto, new TypeReference<ApiResponse<AccountResponseDto>>() {});
+    public ApiResponseUser<AccountResponseDto> creatAccount(AccountCreateRequestDto dto) throws Exception {
+        ApiResponseUser<AccountResponseDto> response = apiClient.post("/api/accounts", dto, new TypeReference<ApiResponseUser<AccountResponseDto>>() {});
         return response;
     }
 
     // 모든 계좌 조회
-    public ApiResponse<List<AccountResponseDto>> getAllAccounts() throws Exception {
-        ApiResponse<List<AccountResponseDto>> response = apiClient.get("/api/accounts", new TypeReference<ApiResponse<List<AccountResponseDto>>>() {});
+    public ApiResponseUser<List<AccountResponseDto>> getAllAccounts() throws Exception {
+        ApiResponseUser<List<AccountResponseDto>> response = apiClient.get("/api/accounts", new TypeReference<ApiResponseUser<List<AccountResponseDto>>>() {});
         return response;
     }
     //계좌번호로 계좌 조회
     public AccountResponseDto getAccountByNumber(String accountNumber) throws Exception {
-        ApiResponse<AccountResponseDto> response = apiClient.get("/api/accounts/"+accountNumber, new TypeReference<ApiResponse<AccountResponseDto>>() {});
+        ApiResponseUser<AccountResponseDto> response = apiClient.get("/api/accounts/"+accountNumber, new TypeReference<ApiResponseUser<AccountResponseDto>>() {});
         return response.getData();
     }
     //고객별 계좌 조회
-    public ApiResponse<List<AccountResponseDto>> getAccountsByCustomerId(String accountNumber) throws Exception {
-        ApiResponse<List<AccountResponseDto>> response = apiClient.get("/api/accounts/"+accountNumber, new TypeReference<ApiResponse<List<AccountResponseDto>>>() {});
+    public ApiResponseUser<List<AccountResponseDto>> getAccountsByCustomerId(String accountNumber) throws Exception {
+        ApiResponseUser<List<AccountResponseDto>> response = apiClient.get("/api/accounts/"+accountNumber, new TypeReference<ApiResponseUser<List<AccountResponseDto>>>() {});
         return response;
     }
     //입금
-    public CashTransactionResponseDto deposit(TransferRequestDto dto) throws Exception {
+    public CashTransactionResponseDto deposit(TransferRequestDto dto,String userId) throws Exception {
 
-        ApiResponse<CashTransactionResponseDto> response = apiClient.post("/api/accounts/"+dto.getToAccountNumber()+"/deposit", dto, new TypeReference<ApiResponse<CashTransactionResponseDto>>() {});
+        ApiResponseUser<CashTransactionResponseDto> response = apiClient.post("/api/accounts/deposit/"+userId, dto, new TypeReference<ApiResponseUser<CashTransactionResponseDto>>() {});
         return response.getData();
     }
     //출금
-    public CashTransactionResponseDto withdraw(TransferRequestDto dto) throws Exception {
+    public CashTransactionResponseDto withdraw(TransferRequestDto dto,String userId) throws Exception {
 
-        ApiResponse<CashTransactionResponseDto> response = apiClient.post("/api/accounts/"+dto.getFromAccountNumber()+"/withdraw", dto, new TypeReference<ApiResponse<CashTransactionResponseDto>>() {});
+        ApiResponseUser<CashTransactionResponseDto> response = apiClient.post("/api/accounts/withdraw"+userId, dto, new TypeReference<ApiResponseUser<CashTransactionResponseDto>>() {});
         return response.getData();
     }
     //송금
-    public CashTransactionResponseDto remittance(TransferRequestDto dto) throws Exception {
-        ApiResponse<CashTransactionResponseDto> reponse = apiClient.post("api/accounts/remittance", dto,new TypeReference<ApiResponse<CashTransactionResponseDto>>() {});
-        return reponse.getData();
+    public CashTransactionResponseDto remittance(TransferRequestDto dto,String userId) throws Exception {
+        ApiResponseUser<CashTransactionResponseDto> response = apiClient.post("/api/accounts/remittance"+userId, dto,new TypeReference<ApiResponseUser<CashTransactionResponseDto>>() {});
+        return response.getData();
     }
     //고객 아이디로 고객 모든 계좌 조회
     public List<AccountResponseDto>  getAccountById(String customerId) throws Exception {
-        ApiResponse<List<AccountResponseDto>> response = apiClient.get("/api/account/"+customerId, new TypeReference<ApiResponse<List<AccountResponseDto>>>() {});
+        ApiResponseUser<List<AccountResponseDto>> response = apiClient.get("/api/accounts/id/"+customerId, new TypeReference<ApiResponseUser<List<AccountResponseDto>>>() {});
         return response.getData();
     }
 
-
+    //계좌 삭제
+    public void deleteAccount(String accountNumber) throws Exception {
+        apiClient.get("/api/accounts/delete/"+accountNumber, new TypeReference<ApiResponseUser>() {});
+    }
 
 }

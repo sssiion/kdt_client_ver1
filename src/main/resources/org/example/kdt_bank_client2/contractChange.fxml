@@ -18,19 +18,23 @@
     </HBox>
 
     <!-- 보유 대출 계약 리스트 -->
+    <ScrollPane layoutX="20" layoutY="60"
+                prefWidth="560" prefHeight="180"
+                vbarPolicy="AS_NEEDED" hbarPolicy="NEVER"
+                style="-fx-border-color: #ccc;">
     <VBox fx:id="contractListVBox"
           layoutX="20" layoutY="60"
-          prefWidth="560" prefHeight="200"
+          prefWidth="560" maxHeight="180"
           spacing="6"
           style="-fx-border-color:#ccc; -fx-padding:10;"/>
-
+    </ScrollPane>
     <!-- 변경 UI -->
     <HBox layoutX="20" layoutY="280" spacing="10" alignment="CENTER_LEFT">
         <Label text="새 만기일:"/>
         <DatePicker fx:id="newMaturityDatePicker" disable="true"/>
         <CheckBox fx:id="interestAdjustableCheckBox"
                   text="금리 조정" disable="true"
-                  onAction="#onInterestAdjustableChanged"/>
+                  />
         <TextField fx:id="newInterestRateField" promptText="새 금리" disable="true" prefWidth="80"/>
 
         <Label text="상환방식:"/>
