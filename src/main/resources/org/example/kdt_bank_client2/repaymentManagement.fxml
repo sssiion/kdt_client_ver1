@@ -17,10 +17,11 @@
     </HBox>
 
     <!-- 대출 계좌 리스트 -->
+    <ScrollPane layoutX="20" layoutY="80">
     <VBox fx:id="loanAccountsVBox"
-          layoutX="20" layoutY="80"
+
           prefWidth="560" prefHeight="380"
           spacing="8"
           style="-fx-border-color:#ccc; -fx-padding:10; -fx-background-color:#fefefe;"/>
-
+    </ScrollPane>
 </AnchorPane>

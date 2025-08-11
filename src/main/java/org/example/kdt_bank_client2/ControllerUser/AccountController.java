@@ -42,21 +42,23 @@ public class AccountController {
         ApiResponseUser<List<AccountResponseDto>> response = apiClient.get("/api/accounts/"+accountNumber, new TypeReference<ApiResponseUser<List<AccountResponseDto>>>() {});
         return response;
     }
-    //입금
-    public CashTransactionResponseDto deposit(TransferRequestDto dto,String userId) throws Exception {
-
-        ApiResponseUser<CashTransactionResponseDto> response = apiClient.post("/api/accounts/deposit/"+userId, dto, new TypeReference<ApiResponseUser<CashTransactionResponseDto>>() {});
+    //입금: to
+    public CashTransactionResponseDto deposit(TransferRequestDto dto) throws Exception {
+        System.out.println("dto"+dto.toString());
+        ApiResponseUser<CashTransactionResponseDto> response = apiClient.post("/api/accounts/deposit", dto, new TypeReference<ApiResponseUser<CashTransactionResponseDto>>() {});
+        System.out.println(response.getData());
         return response.getData();
     }
-    //출금
-    public CashTransactionResponseDto withdraw(TransferRequestDto dto,String userId) throws Exception {
-
-        ApiResponseUser<CashTransactionResponseDto> response = apiClient.post("/api/accounts/withdraw"+userId, dto, new TypeReference<ApiResponseUser<CashTransactionResponseDto>>() {});
+    //출금: from
+    public CashTransactionResponseDto withdraw(TransferRequestDto dto) throws Exception {
+        System.out.println("dto"+dto.toString());
+        ApiResponseUser<CashTransactionResponseDto> response = apiClient.post("/api/accounts/withdraw", dto, new TypeReference<ApiResponseUser<CashTransactionResponseDto>>() {});
+        System.out.println(response.getData());
         return response.getData();
     }
     //송금
-    public CashTransactionResponseDto remittance(TransferRequestDto dto,String userId) throws Exception {
-        ApiResponseUser<CashTransactionResponseDto> response = apiClient.post("/api/accounts/remittance"+userId, dto,new TypeReference<ApiResponseUser<CashTransactionResponseDto>>() {});
+    public CashTransactionResponseDto remittance(TransferRequestDto dto) throws Exception {
+        ApiResponseUser<CashTransactionResponseDto> response = apiClient.post("/api/accounts/remittance", dto,new TypeReference<ApiResponseUser<CashTransactionResponseDto>>() {});
         return response.getData();
     }
     //고객 아이디로 고객 모든 계좌 조회

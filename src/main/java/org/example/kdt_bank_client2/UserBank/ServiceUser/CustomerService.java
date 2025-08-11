@@ -114,8 +114,8 @@ public class CustomerService {
     //입금
     public void deposit(TransferRequestDto dto){
         try{
-            String userId = customerSession.getCustomer().getId();
-            CashTransactionResponseDto currentdto = accountController.deposit(dto,userId);
+
+            CashTransactionResponseDto currentdto = accountController.deposit(dto);
             customerSession.setCashTransactionResponseDto(currentdto);
             getAccountsByCustomerId(customerSession.getCustomer().getId());
 
@@ -126,8 +126,8 @@ public class CustomerService {
     //출금
     public void withdraw(TransferRequestDto dto){
         try{
-            String userId = customerSession.getCustomer().getId();
-            CashTransactionResponseDto currentdto = accountController.withdraw(dto,userId);
+
+            CashTransactionResponseDto currentdto = accountController.withdraw(dto);
             customerSession.setCashTransactionResponseDto(currentdto);
             getAccountsByCustomerId(customerSession.getCustomer().getId());
 
@@ -139,8 +139,8 @@ public class CustomerService {
     //송금
     public void remittance(TransferRequestDto dto){
         try{
-            String userId = customerSession.getCustomer().getId();
-            CashTransactionResponseDto currentdto = accountController.remittance(dto,userId);
+
+            CashTransactionResponseDto currentdto = accountController.remittance(dto);
             customerSession.setCashTransactionResponseDto(currentdto);
             getAccountsByCustomerId(customerSession.getCustomer().getId());
 

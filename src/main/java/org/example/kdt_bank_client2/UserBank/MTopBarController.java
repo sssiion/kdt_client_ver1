@@ -38,9 +38,7 @@ public class MTopBarController {
         // 현재 Stage 가져오기
         Stage stage = (Stage) btnAlarm.getScene().getWindow();
 
-        // 채팅 시스템 실행
-        UnifiedApplication app = new UnifiedApplication();
-        app.openCustomerSystem(stage);
+
     }
 
     @FXML
@@ -69,8 +67,10 @@ public class MTopBarController {
             Parent root = loader.load();
             Stage loginStage = new Stage();
             loginStage.setTitle("로그인");
-            loginStage.setScene(new Scene(root));
-            loginStage.show();
+            //loginStage.setScene(new Scene(root));
+           // loginStage.show();
+            UnifiedApplication app = new UnifiedApplication();
+            app.openCustomerSystem(loginStage);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

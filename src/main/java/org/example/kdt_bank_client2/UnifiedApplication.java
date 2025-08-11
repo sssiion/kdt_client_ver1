@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,7 +16,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
-
+import org.example.kdt_bank_client2.Chatapp;
 import java.io.IOException;
 
 
@@ -30,7 +31,7 @@ public class UnifiedApplication extends Application {
         showModeSelection(primaryStage);
     }
 
-    private void showModeSelection(Stage stage) {
+    public void showModeSelection(Stage stage) {
         VBox container = new VBox(30);
         container.setAlignment(Pos.CENTER);
         container.setPadding(new Insets(50));
@@ -71,7 +72,7 @@ public class UnifiedApplication extends Application {
     public void openCustomerSystem(Stage stage) {
         // Spring Boot 기반 채팅 클라이언트 실행
         initSpringContext();
-        springContext.publishEvent(new ChatClientApp.StageReadyEvent(stage));
+        springContext.publishEvent(new Chatapp.onApplicationEvent(new ChatClientApp().s));
     }
 
     private void initSpringContext() {
