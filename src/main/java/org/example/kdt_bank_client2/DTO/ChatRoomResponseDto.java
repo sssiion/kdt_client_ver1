@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ChatRoomResponseDto {
-    private String roomId;
+    private Long roomId;
     private String roomName;
     private Integer userCount;
     private String createdAt;

@@ -70,7 +70,7 @@ public class ChatSocketClient {
         });
     }
 
-    public void subscribeRoom(String roomId, Consumer<ChatMessageDto> messageListener) {
+    public void subscribeRoom(Long roomId, Consumer<ChatMessageDto> messageListener) {
         if (!isConnected()) {
             System.err.println("WebSocket이 연결되어 있지 않습니다.");
             return;
@@ -103,7 +103,7 @@ public class ChatSocketClient {
 
         System.out.println("🔔 방 구독 완료: " + roomId);
     }
-    public void unsubscribeRoom(String roomId) {
+    public void unsubscribeRoom(Long roomId) {
         if (subscriptions.containsKey(roomId)) {
             subscriptions.get(roomId).unsubscribe();
             subscriptions.remove(roomId);

@@ -7,13 +7,13 @@ import java.time.LocalDateTime;
 
 @Component
 public class ChatRoomSession {
-    private String roomId;
+    private Long roomId;
     private String roomName;
     private Integer userCount;
     private String createdAt;
     private boolean isInRoom = false;
 
-    public void setCurrentRoom(String roomId, String roomName, Integer userCount, String createdAt) {
+    public void setCurrentRoom(Long roomId, String roomName, Integer userCount, String createdAt) {
         this.roomId = roomId;
         this.roomName = roomName;
         this.userCount = userCount;
@@ -42,7 +42,7 @@ public class ChatRoomSession {
         return dto;
     }
 
-    public String getCurrentRoomId() {
+    public Long getCurrentRoomId() {
         return roomId;
     }
 

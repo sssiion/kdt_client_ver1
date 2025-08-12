@@ -57,7 +57,7 @@ public class ChatRoomController {
 
     }
 
-    public void registerUserToRoom(String roomId, String userId) throws Exception {
+    public void registerUserToRoom(Long roomId, String userId) throws Exception {
         ApiResponse<String> response =
                 apiClient.post("/api/chatrooms/" + roomId + "/join?userId=" + userId, null,
                         new TypeReference<ApiResponse<String>>() {});
@@ -67,7 +67,7 @@ public class ChatRoomController {
         }
     }
 
-    public void removeUserFromRoom(String roomId, String userId) throws Exception {
+    public void removeUserFromRoom(Long roomId, String userId) throws Exception {
         apiClient.delete("/api/chatrooms/" + roomId + "/leave?userId=" + userId);
 
     }
@@ -83,7 +83,7 @@ public class ChatRoomController {
             throw new RuntimeException(response.getMessage());
         }
     }
-    public List<ChatMessageDto> getMessage(String roomId) throws Exception {
+    public List<ChatMessageDto> getMessage(Long roomId) throws Exception {
         ApiResponse<List<ChatMessageDto>> response =
                 apiClient.get("/api/Message/" + roomId, new TypeReference<ApiResponse<List<ChatMessageDto>>>() {});
         if (response.isSuccess()) {
@@ -95,7 +95,7 @@ public class ChatRoomController {
 
 
     // 🔥 새로 추가: 특정 채팅방 조회
-    public ChatRoomResponseDto getRoom(String roomId) throws Exception {
+    public ChatRoomResponseDto getRoom(Long roomId) throws Exception {
         ApiResponse<ChatRoomResponseDto> response =
                 apiClient.get("/api/chatrooms/" + roomId, new TypeReference<ApiResponse<ChatRoomResponseDto>>() {});
 

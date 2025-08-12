@@ -23,7 +23,7 @@ public class ChatService {
         this.roomController = roomController;
     }
 
-    public void enterRoom(String roomId, UserResponseDto user,
+    public void enterRoom(Long roomId, UserResponseDto user,
                          Consumer<ChatMessageDto> messageCallback,
                          Consumer<String> historyCallback,
                          Consumer<String> errorCallback) {
@@ -49,7 +49,7 @@ public class ChatService {
         }
     }
 
-    public void sendMessage(String roomId, UserResponseDto user, String message) {
+    public void sendMessage(Long roomId, UserResponseDto user, String message) {
         if (message == null || message.trim().isEmpty()) {
             System.err.println("빈 메시지는 전송할 수 없습니다.");
             return;
@@ -59,7 +59,7 @@ public class ChatService {
         socketClient.sendMessage(dto);
     }
     //방 나가기 버튼에 있을 것
-    public void exitChatRoom(String roomId, UserResponseDto user) {
+    public void exitChatRoom(Long roomId, UserResponseDto user) {
         try {
             //ChatMessageDto leaveDto = createLeaveMessage(roomId, user);
             //socketClient.leaveRoom(leaveDto);
@@ -84,7 +84,7 @@ public class ChatService {
     }
 
     // 🔥 DTO 생성 메서드들 수정 (서버 API에 맞춤)
-    private ChatMessageDto createEnterMessage(String roomId, UserResponseDto user) {
+    private ChatMessageDto createEnterMessage(Long roomId, UserResponseDto user) {
         ChatMessageDto dto = new ChatMessageDto();
         dto.setRoomId(roomId);
         dto.setUserId(user.getUserId());    // senderId → userId
@@ -93,7 +93,7 @@ public class ChatService {
         return dto;
     }
 
-    private ChatMessageDto createChatMessage(String roomId, UserResponseDto user, String message) {
+    private ChatMessageDto createChatMessage(Long roomId, UserResponseDto user, String message) {
         ChatMessageDto dto = new ChatMessageDto();
         dto.setRoomId(roomId);
         dto.setUserId(user.getUserId());    // senderId → userId
@@ -102,7 +102,7 @@ public class ChatService {
         return dto;
     }
 
-    private ChatMessageDto createLeaveMessage(String roomId, UserResponseDto user) {
+    private ChatMessageDto createLeaveMessage(Long roomId, UserResponseDto user) {
         ChatMessageDto dto = new ChatMessageDto();
         dto.setRoomId(roomId);
         dto.setUserId(user.getUserId());    // senderId → userId

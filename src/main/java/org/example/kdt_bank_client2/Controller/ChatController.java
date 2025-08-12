@@ -167,7 +167,7 @@ public class ChatController {
         );
         messageField.setOnAction(e -> {
             String content = messageField.getText().trim();
-            String roomId = roomSession.getCurrentRoomId();
+            Long roomId = roomSession.getCurrentRoomId();
             UserResponseDto user = userSession.getCurrentUser();
             ChatMessageDto myMessage = new ChatMessageDto();
             myMessage.setUserId(user.getUserId());
@@ -274,7 +274,7 @@ public class ChatController {
             // ChatService를 통해 초대 메시지 전송
             // 실제 구현은 서버 API에 따라 달라질 수 있음
 
-            String roomId = roomSession.getCurrentRoomId();
+            Long roomId = roomSession.getCurrentRoomId();
             roomController.registerUserToRoom(roomId,friendId);
             System.out.println("친구 초대: " + friendId + " to room: " + roomId);
 
@@ -326,7 +326,7 @@ public class ChatController {
         alert.showAndWait();
         goBackToRoomList();
     }
-    private void loadPreviousMessages(String roomId) {
+    private void loadPreviousMessages(Long roomId) {
         try{
             System.out.println("이전 메시지 로드 중...");
 
@@ -357,7 +357,7 @@ public class ChatController {
 
     private void connectWebSocketAndEnterRoom() {
         String userId = userSession.getCurrentUser().getUserId();
-        String roomId = roomSession.getCurrentRoomId();
+        Long roomId = roomSession.getCurrentRoomId();
         UserResponseDto user = userSession.getCurrentUser();
         loadPreviousMessages(roomId);
         if (!chatService.isConnected()) {
@@ -426,7 +426,7 @@ public class ChatController {
         // 방 나가기
 
         if (chatService.isConnected()) {
-            String roomId = roomSession.getCurrentRoomId();
+            Long roomId = roomSession.getCurrentRoomId();
             UserResponseDto user = userSession.getCurrentUser();
             // 🔥 수정: ChatService.leaveRoom() 호출
             chatService.exitChatRoom(roomId, user);

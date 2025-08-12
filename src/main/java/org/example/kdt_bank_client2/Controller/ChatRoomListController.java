@@ -342,35 +342,37 @@ public class ChatRoomListController {
                 setGraphic(null);
                 return;
             }
-
-            HBox container = new HBox();
-            container.setSpacing(10);
+            setText(null); // 중요: 텍스트를 비워 그래픽만 사용
+            HBox container = new HBox(10);
             container.setPadding(new Insets(10));
             container.setStyle("-fx-background-color: white;");
 
-            // 프로필 (기존 RoundedPanel 대신)
             Label profileLabel = new Label();
-            profileLabel.setPrefSize(60, 60);
+            profileLabel.setPrefSize(40, 40);
+            profileLabel.setMinSize(40, 40);
+            profileLabel.setMaxSize(40, 40);
             profileLabel.setStyle(
                     "-fx-background-color: pink; " +
-                            "-fx-background-radius: 30; " +
-                            "-fx-border-radius: 30;"
+                            "-fx-background-radius: 20; " +
+                            "-fx-border-radius: 20;"
             );
 
-            // 채팅방 정보
-            VBox roomInfo = new VBox();
-            roomInfo.setSpacing(2);
-
+            VBox roomInfo = new VBox(2);
             Label roomNameLabel = new Label(room.getRoomName());
-            roomNameLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-font-family: '맑은 고딕';");
+            roomNameLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
 
             Label participantsLabel = new Label("참여자: " + room.getUserCount() + "명");
             participantsLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: gray;");
 
             roomInfo.getChildren().addAll(roomNameLabel, participantsLabel);
+            HBox.setHgrow(roomInfo, Priority.ALWAYS);
 
             container.getChildren().addAll(profileLabel, roomInfo);
-            HBox.setHgrow(roomInfo, Priority.ALWAYS);
+
+            // 셀 높이가 너무 작게 계산되는 경우 방지
+            container.setMinHeight(60);
+            setMinHeight(Region.USE_PREF_SIZE);
+            setPrefHeight(60);
 
             setGraphic(container);
         }

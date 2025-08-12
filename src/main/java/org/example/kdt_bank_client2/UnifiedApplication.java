@@ -72,7 +72,7 @@ public class UnifiedApplication extends Application {
     public void openCustomerSystem(Stage stage) {
         // Spring Boot 기반 채팅 클라이언트 실행
         initSpringContext();
-        springContext.publishEvent(new Chatapp.onApplicationEvent(new ChatClientApp().s));
+        springContext.publishEvent(new ChatClientApp.StageReadyEvent(stage));
     }
 
     private void initSpringContext() {
