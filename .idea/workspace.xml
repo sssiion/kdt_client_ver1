@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6ca4a95-beb0-48cc-beb0-3aa734df96e2" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.11/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.11/fileHashes/fileHashes.bin" afterDir="false" />
@@ -13,20 +14,9 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/kdt_bank_client2/Controller/ChatRoomListController$ChatRoomListCell.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/kdt_bank_client2/Controller/ChatRoomListController$ChatRoomListCell.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/kdt_bank_client2/UnifiedApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/kdt_bank_client2/UnifiedApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/kdt_bank_client2/UserBank/MTopBarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/kdt_bank_client2/UserBank/MTopBarController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/problems/problems-report.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/kdt_bank_client2/ChatSocketClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/kdt_bank_client2/ChatSocketClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/kdt_bank_client2/Controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/kdt_bank_client2/Controller/ChatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/kdt_bank_client2/Controller/ChatRoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/kdt_bank_client2/Controller/ChatRoomController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/kdt_bank_client2/Controller/ChatRoomListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/kdt_bank_client2/Controller/ChatRoomListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/kdt_bank_client2/DTO/ChatMessageDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/kdt_bank_client2/DTO/ChatMessageDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/kdt_bank_client2/DTO/ChatRoomResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/kdt_bank_client2/DTO/ChatRoomResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/kdt_bank_client2/Service/ChatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/kdt_bank_client2/Service/ChatService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/kdt_bank_client2/Session/ChatRoomSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/kdt_bank_client2/Session/ChatRoomSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/kdt_bank_client2/UnifiedApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/kdt_bank_client2/UnifiedApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/kdt_bank_client2/ControllerUser/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/kdt_bank_client2/ControllerUser/AccountController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,36 +62,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Gradle.kdt_client_ver1 [:org.example.kdt_bank_client2.UnifiedApplication.main()].executor": "Run",
-    "Gradle.kdt_client_ver1 빌드.executor": "Run",
-    "Gradle.소스 다운로드.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.KdtBankServerProject2Application.executor": "Run",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Users/USER/Documents/GitHub/kdt_client_ver1/src/main/resources/org/example/kdt_bank_client2",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "모듈",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true",
-    "애플리케이션.UnifiedApplication.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Gradle.kdt_client_ver1 [:org.example.kdt_bank_client2.UnifiedApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.kdt_client_ver1 빌드.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.소스 다운로드.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.KdtBankServerProject2Application.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/USER/Documents/GitHub/kdt_client_ver1/src/main/resources/org/example/kdt_bank_client2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;모듈&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
+    &quot;애플리케이션.UnifiedApplication.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\USER\Documents\GitHub\kdt_client_ver1\src\main\resources\org\example\kdt_bank_client2" />
@@ -167,6 +157,7 @@
       <workItem from="1754808010665" duration="39560000" />
       <workItem from="1754856232380" duration="6444000" />
       <workItem from="1754870390433" duration="33441000" />
+      <workItem from="1755070330075" duration="1662000" />
     </task>
     <servers />
   </component>

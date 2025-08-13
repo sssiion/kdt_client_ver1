@@ -39,7 +39,7 @@ public class AccountController {
     }
     //고객별 계좌 조회
     public ApiResponseUser<List<AccountResponseDto>> getAccountsByCustomerId(String accountNumber) throws Exception {
-        ApiResponseUser<List<AccountResponseDto>> response = apiClient.get("/api/accounts/"+accountNumber, new TypeReference<ApiResponseUser<List<AccountResponseDto>>>() {});
+        ApiResponseUser<List<AccountResponseDto>> response = apiClient.get("/api/accounts/number/"+accountNumber, new TypeReference<ApiResponseUser<List<AccountResponseDto>>>() {});
         return response;
     }
     //입금: to
@@ -69,7 +69,7 @@ public class AccountController {
 
     //계좌 삭제
     public void deleteAccount(String accountNumber) throws Exception {
-        apiClient.get("/api/accounts/delete/"+accountNumber, new TypeReference<ApiResponseUser>() {});
+        apiClient.get("/api/accounts/delete/"+accountNumber, new TypeReference<>() {});
     }
 
 }
